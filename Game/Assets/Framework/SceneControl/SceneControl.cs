@@ -20,9 +20,12 @@ public class SceneControl : SingletonMono<SceneControl>
 
     IEnumerator TransitionScene(string _from,string _to)
     {
-        //–∂‘ÿfrom≥°æ∞;
+        //–∂‘ÿfrom≥°æ∞
+        EventManager.Send(EventName.EnterScene);
         yield return SceneManager.UnloadSceneAsync(_from);
+        //º”‘ÿto≥°æ∞
         yield return SceneManager.LoadSceneAsync(_to,LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneAt(SceneManager.sceneCount - 1));
+        EventManager.Send(EventName.ExitScene);
     }
 }
