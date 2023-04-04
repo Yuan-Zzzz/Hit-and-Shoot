@@ -12,7 +12,11 @@ public class SingletonMono<T> : MonoBehaviour where T : SingletonMono<T>
     public static T Instance => instance;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+       
         if (instance != null) Destroy(this.gameObject);
+        else
+        {
+            instance = (T)this;
+        }
     }
 }
