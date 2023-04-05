@@ -10,7 +10,7 @@ public class SingletonMono<T> : MonoBehaviour where T : SingletonMono<T>
     private static T instance;
 
     public static T Instance => instance;
-    private void Awake()
+    protected virtual void Awake()
     {
        
         if (instance != null) Destroy(this.gameObject);
