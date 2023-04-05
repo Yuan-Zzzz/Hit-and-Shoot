@@ -5,7 +5,7 @@ using UnityEngine;
 public static class InputManager
 {
    private static InputSystem input = new InputSystem();
-    public static Vector2 inputTest => input.Gameplay.Move.ReadValue<Vector2>();
+    public static Vector2 Move => input.Gameplay.Move.ReadValue<Vector2>();
 
     //启用输入系统
     public static void OnEnable()
