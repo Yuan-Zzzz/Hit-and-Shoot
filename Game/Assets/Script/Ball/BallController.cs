@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class BallController : MonoBehaviour
 {
     private Rigidbody2D ballRB;
@@ -21,9 +21,16 @@ public class BallController : MonoBehaviour
         if (other.gameObject.CompareTag(Tags.Platform))
         {
             float x = HitFactor(transform.position, other.transform.position, other.collider.bounds.size.x);
-
+            
             ballRB.velocity = new Vector2(x, 1).normalized * data.maxSpeed;
+
+            //other.gameObject.transform.DOScale(new Vector3(1, 2, 1), 0.1f);
+            other.transform.DOShakeScale(0.2f, new Vector2(0.1f, 0.6f));
+            transform.DOShakeScale(0.2f, new Vector2(0.1f, 0.6f));
+
         }
+        
+        Camera.main.transform.DOShakePosition(0.1f, 0.2f);
     }
     private float HitFactor(Vector2 ballPos, Vector2 platformPos, float platformWidth)
     {
