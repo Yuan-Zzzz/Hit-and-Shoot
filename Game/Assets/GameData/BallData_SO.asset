@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a4a86096e4761468963355d80f48df, type: 3}
   m_Name: BallData_SO
   m_EditorClassIdentifier: 
-  bounciness: 1
-  gravity: 2
+  bounciness: 0.7
+  gravity: 1.5
   backlashForce: 0
   maxSpeed: 17

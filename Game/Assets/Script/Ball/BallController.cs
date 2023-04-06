@@ -14,8 +14,18 @@ public class BallController : MonoBehaviour
         ballRB = GetComponent<Rigidbody2D>();
         ballCollider = GetComponent<Collider2D>();
         Initialize();
-    }
 
+        
+       
+    }
+    private void Update()
+    {
+        if (InputManager.Shoot)
+        {
+
+            ballRB.AddForce((Vector2)(transform.position - Camera.main.ScreenToWorldPoint(InputManager.MousePos)) * 100, ForceMode2D.Force);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D other)
     {
         EventManager.Send(EventName.BallHit,other);
@@ -25,6 +35,7 @@ public class BallController : MonoBehaviour
             
             ballRB.velocity = new Vector2(x, 1).normalized * data.maxSpeed;
         }
+     
             transform.DOPunchScale(new Vector2(0.2f,0.2f), 0.1f);
             Camera.main.transform.DOShakePosition(0.1f, 0.2f);
     }
