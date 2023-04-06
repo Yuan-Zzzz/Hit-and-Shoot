@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +12,24 @@ public class PlatformController : MonoBehaviour
     private void Awake()
     {
         platformRB = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
+        EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
+    }
+
+    private void OnBallHit(Collision2D other)
+    {
+        if(other.gameObject == this.gameObject)
+        {
+            transform.DOPunchScale(new Vector2(0.2f, 0.2f), 0.2f);
+        }
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
     }
     private void Start()
     {

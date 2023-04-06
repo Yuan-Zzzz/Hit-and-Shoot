@@ -18,19 +18,19 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        EventManager.Send(EventName.BallHit,other);
         if (other.gameObject.CompareTag(Tags.Platform))
         {
             float x = HitFactor(transform.position, other.transform.position, other.collider.bounds.size.x);
             
             ballRB.velocity = new Vector2(x, 1).normalized * data.maxSpeed;
-
-            //other.gameObject.transform.DOScale(new Vector3(1, 2, 1), 0.1f);
-            other.transform.DOShakeScale(0.2f, new Vector2(0.1f, 0.6f));
-            transform.DOShakeScale(0.2f, new Vector2(0.1f, 0.6f));
-
         }
-        
-        Camera.main.transform.DOShakePosition(0.1f, 0.2f);
+            transform.DOPunchScale(new Vector2(0.2f,0.2f), 0.1f);
+            Camera.main.transform.DOShakePosition(0.1f, 0.2f);
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        transform.DOScale(new Vector3(1, 1, 1), 0.1f);
     }
     private float HitFactor(Vector2 ballPos, Vector2 platformPos, float platformWidth)
     {
