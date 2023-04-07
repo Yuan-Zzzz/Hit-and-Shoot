@@ -5,7 +5,7 @@ public enum EventName
 }
 public enum PoolName
 {
-
+    ProjectilePool
 }
 public enum AudioName
 {

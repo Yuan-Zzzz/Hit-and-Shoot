@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BallData_SO
   m_EditorClassIdentifier: 
   bounciness: 0.7
-  gravity: 1.5
-  backlashForce: 0
-  maxSpeed: 17
+  gravity: 1
+  backlashForce: 500
+  maxSpeed: 10
