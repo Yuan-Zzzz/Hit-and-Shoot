@@ -20,6 +20,11 @@ public class BallController : MonoBehaviour
         Initialize();
     }
 
+    private void OnEnable()
+    {
+        PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Projectile"), 10, PoolName.ProjectilePool);
+    }
+
     private void Update()
     {
 
@@ -64,7 +69,9 @@ public class BallController : MonoBehaviour
     private void Shoot()
     {
         Vector2 dir = ((Vector2)(transform.position - Camera.main.ScreenToWorldPoint(InputManager.MousePos))).normalized;
-
+        var newProjectile = PoolManager.Instance.GetFromPool(PoolName.ProjectilePool);
+        newProjectile.GetComponent<ProjectileController>().SetDirection(-dir);
+        newProjectile.transform.position = transform.position;
         ballRB.velocity = Vector2.zero;
 
         ballRB.AddForce(dir * data.backlashForce, ForceMode2D.Force);
