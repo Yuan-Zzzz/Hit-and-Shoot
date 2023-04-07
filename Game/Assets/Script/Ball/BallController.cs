@@ -20,9 +20,8 @@ public class BallController : MonoBehaviour
     }
     private void Update()
     {
-        if (InputManager.Shoot)
+        if (InputManager.ShootRelease)
         {
-
             ballRB.AddForce((Vector2)(transform.position - Camera.main.ScreenToWorldPoint(InputManager.MousePos)) * 100, ForceMode2D.Force);
         }
     }
