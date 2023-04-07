@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class ProjectileData
 {
-    public Vector2 dir;
     public float moveSpeed = 8f;
 }
