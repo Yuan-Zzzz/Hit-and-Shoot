@@ -26,8 +26,4 @@ public class ProjectileController : MonoBehaviour
         float angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
-    public Vector2 GetDirection()
-    {
-        return data.dir;
-    }
 }
