@@ -5,20 +5,28 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     private ProjectileData data = new ProjectileData();
-    private void OnEnable()
-    {
-      
-    }
+ 
     private void Update()
     {
         transform.Translate(Vector2 .right*data.moveSpeed*Time.deltaTime);
     }
-  
-
-    private void OnCollisionEnter2D(Collision2D other)
+    private void FixedUpdate()
     {
-        PoolManager.Instance.ReturnPool(PoolName.ProjectilePool, this.gameObject);
+        if(CheckCollision(out Collider2D _ohter))
+        {
+            if (!_ohter.gameObject.CompareTag(Tags.Ball))
+            {
+                PoolManager.Instance.ReturnPool(PoolName.ProjectilePool,this.gameObject);
+            }
+            _ohter.gameObject.GetComponent<BrickController>()?.Hitted();
+        }
     }
+    private bool CheckCollision(out Collider2D _other)
+    {
+        _other = Physics2D.OverlapBox(transform.position, transform.localScale, data.angle); ;
+        return Physics2D.OverlapBox(transform.position, transform.localScale, data.angle);
+    }
+  
     public void SetSpeed(float _speed)
     {
         data.moveSpeed = _speed;

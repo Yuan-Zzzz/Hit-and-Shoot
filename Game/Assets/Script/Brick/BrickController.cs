@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
-public class Brick : MonoBehaviour
+public class BrickController : MonoBehaviour
 {
    
     private BrickData data = new BrickData();
@@ -25,14 +25,21 @@ public class Brick : MonoBehaviour
     {
       if(other.gameObject == this.gameObject)
         {
-            data.count--;
-            transform.DOPunchScale(new Vector2(0.3f, 0.3f), 0.5f);
-            data.UpdateBrick(this.gameObject);
-            if (data.count == 0)
-                StartCoroutine(Destory());
+            Hitted();
         }
     }
-
+    private void Update()
+    {
+        Debug.Log("???");
+    }
+    public void Hitted()
+    {
+        data.count--;
+        transform.DOPunchScale(new Vector2(0.3f, 0.3f), 0.5f);
+        data.UpdateBrick(this.gameObject);
+        if (data.count == 0)
+            StartCoroutine(Destory());
+    }
     private void OnDisable()
     {
         EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
