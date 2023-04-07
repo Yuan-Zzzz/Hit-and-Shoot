@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
+
 public class Brick : MonoBehaviour
 {
    
@@ -10,18 +12,30 @@ public class Brick : MonoBehaviour
     private void Start()
     {
         data.UpdateBrick(gameObject);
+      
+    }
+    private void OnEnable()
+    {
+        EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
+   
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+
+    private void OnBallHit(Collision2D other)
     {
-        if (other.gameObject.CompareTag(Tags.Ball))
+      if(other.gameObject == this.gameObject)
         {
             data.count--;
             transform.DOPunchScale(new Vector2(0.3f, 0.3f), 0.5f);
             data.UpdateBrick(this.gameObject);
             if (data.count == 0)
-            StartCoroutine(Destory());
+                StartCoroutine(Destory());
         }
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
     }
 
     IEnumerator Destory()

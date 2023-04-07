@@ -13,6 +13,12 @@ public class ProjectileController : MonoBehaviour
     {
         transform.Translate(Vector2 .right*data.moveSpeed*Time.deltaTime);
     }
+  
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        PoolManager.Instance.ReturnPool(PoolName.ProjectilePool, this.gameObject);
+    }
     public void SetSpeed(float _speed)
     {
         data.moveSpeed = _speed;
@@ -21,9 +27,13 @@ public class ProjectileController : MonoBehaviour
     {
         return data.moveSpeed;
     }
-    public void SetDirection(Vector2 _dir)
+    public void SetAngle(Vector2 _dir)
     {
-        float angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        data.angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(data.angle, Vector3.forward);
+    }
+    public float GetAngle()
+    {
+        return data.angle;
     }
 }

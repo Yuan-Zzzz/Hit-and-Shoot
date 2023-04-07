@@ -70,7 +70,7 @@ public class BallController : MonoBehaviour
     {
         Vector2 dir = ((Vector2)(transform.position - Camera.main.ScreenToWorldPoint(InputManager.MousePos))).normalized;
         var newProjectile = PoolManager.Instance.GetFromPool(PoolName.ProjectilePool);
-        newProjectile.GetComponent<ProjectileController>().SetDirection(-dir);
+        newProjectile.GetComponent<ProjectileController>().SetAngle(-dir);
         newProjectile.transform.position = transform.position;
         ballRB.velocity = Vector2.zero;
 

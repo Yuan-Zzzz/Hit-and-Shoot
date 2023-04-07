@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 13183412}
   - component: {fileID: 13183413}
   - component: {fileID: 13183414}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DirCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 551119509}
   - component: {fileID: 551119511}
   - component: {fileID: 551119510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ball
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &671584931
 Transform:
   m_ObjectHideFlags: 0
@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 1087254380}
   - component: {fileID: 1087254379}
   - component: {fileID: 1087254381}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

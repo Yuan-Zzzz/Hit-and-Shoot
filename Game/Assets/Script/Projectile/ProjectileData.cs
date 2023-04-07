@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class ProjectileData
 {
-    public float moveSpeed = 8f;
+    public float moveSpeed = 10f;
+    public float angle;
 }
