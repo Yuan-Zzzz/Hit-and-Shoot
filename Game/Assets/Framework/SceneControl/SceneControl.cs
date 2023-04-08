@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneControl : SingletonMono<SceneControl>
 {
+    [HideInInspector]
+    public int level;
+
     /// <summary>
     /// ³¡¾°×ª»»
     /// </summary>
@@ -27,5 +30,7 @@ public class SceneControl : SingletonMono<SceneControl>
         yield return SceneManager.LoadSceneAsync(_to,LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneAt(SceneManager.sceneCount - 1));
         EventManager.Send(EventName.ExitScene);
+
+        if (_to == "Gameplay") EventManager.Send<int>(EventName.LoadLevel,level);
     }
 }

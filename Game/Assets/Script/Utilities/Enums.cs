@@ -1,7 +1,8 @@
 public enum EventName
 {
     ExitScene,EnterScene,
-    BallHit
+    BallHit,
+    LoadLevel
 }
 public enum PoolName
 {
