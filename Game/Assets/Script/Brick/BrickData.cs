@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class BrickData
 {
-    public int count = 3;
-    public Color brickColor;
+    public int count = 1;
+
 
     private Color color_3 = new Color(0, 0, 0, 1);
     private Color color_2 = new Color(0.5f, 0.5f, 0.5f, 1);

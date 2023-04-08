@@ -18,7 +18,8 @@ public class LevelController : MonoBehaviour
     {
         foreach (var item in levelDatas[_level-1].bricks)
         {
-            Instantiate(item.brick, item.pos, Quaternion.identity);
+           var newBrick = Instantiate(item.brick, item.pos, Quaternion.identity);
+            newBrick.GetComponent<BrickController>().data.count = item.data.count;
         }
     }
 

@@ -7,7 +7,7 @@ using System;
 public class BrickController : MonoBehaviour
 {
    
-    private BrickData data = new BrickData();
+    public BrickData data = new BrickData();
 
     private void Start()
     {

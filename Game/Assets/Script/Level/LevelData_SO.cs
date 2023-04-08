@@ -12,7 +12,9 @@ public class LevelData_SO : ScriptableObject
 [System.Serializable]
 public class SingleBrickData
 {
- 
-   public GameObject brick;
-   public Vector2 pos;
+
+    public GameObject brick;
+    public BrickData data;
+    public Vector2 pos;
+        
 }
