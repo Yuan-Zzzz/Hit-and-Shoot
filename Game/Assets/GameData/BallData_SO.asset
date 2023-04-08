@@ -16,3 +16,4 @@ MonoBehaviour:
   gravity: 1
   backlashForce: 500
   maxSpeed: 10
+  count: 50

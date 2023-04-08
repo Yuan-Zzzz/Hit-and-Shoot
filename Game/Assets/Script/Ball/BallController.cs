@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Threading;
 using System;
+using UnityEngine.UI;
 
 public class BallController : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class BallController : MonoBehaviour
     private Collider2D ballCollider;
     [SerializeField]
     private BallData_SO data;
-
+    [SerializeField]
+    private Text CountText;
 
     private void Awake()
     {
@@ -23,6 +25,8 @@ public class BallController : MonoBehaviour
     private void OnEnable()
     {
         PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Projectile"), 10, PoolName.ProjectilePool);
+
+        CountText.text = data.count.ToString();
     }
 
     private void Update()
@@ -76,6 +80,8 @@ public class BallController : MonoBehaviour
 
         ballRB.AddForce(dir * data.backlashForce, ForceMode2D.Force);
 
+        data.count--;
+        CountText.text = data.count.ToString();
 
     }
 }

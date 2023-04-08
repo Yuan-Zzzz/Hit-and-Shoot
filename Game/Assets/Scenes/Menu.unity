@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   from: Menu
-  to: TestScene
+  to: LevelSelection
 --- !u!4 &1069103743
 Transform:
   m_ObjectHideFlags: 0
