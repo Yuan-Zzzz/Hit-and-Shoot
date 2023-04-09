@@ -13,10 +13,10 @@ public class FlashController : MonoBehaviour
     }
     private void OnEnable()
     {
-        
+
         //EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
 
-        flashSpriteRenderer.color = new Color(flashSpriteRenderer.color.r, flashSpriteRenderer.color.g, flashSpriteRenderer.color.b, 1f);
+        flashSpriteRenderer.color = GameObject.FindGameObjectWithTag(Tags.Ball).GetComponent<SpriteRenderer>().color;
         flashSpriteRenderer.DOColor(new Color(flashSpriteRenderer.color.r, flashSpriteRenderer.color.g, flashSpriteRenderer.color.b, 0), 0.5f);
         transform.localScale = new Vector2(1, 1);
         transform.DOScale(new Vector2(0f, 0f), 0.5f);

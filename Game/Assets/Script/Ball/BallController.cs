@@ -84,6 +84,7 @@ public class BallController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         EventManager.Send<Collision2D>(EventName.BallHit, other);
+        
         if (other.gameObject.CompareTag(Tags.Platform))
         {
             float x = HitFactor(transform.position, other.transform.position, other.collider.bounds.size.x);
