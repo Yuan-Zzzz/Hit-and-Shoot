@@ -21,18 +21,14 @@ public class BrickController : MonoBehaviour
     }
 
 
-    private void OnBallHit(Collision2D other)
+    public virtual void OnBallHit(Collision2D other)
     {
       if(other.gameObject == this.gameObject)
         {
             Hitted();
         }
     }
-    private void Update()
-    {
-        Debug.Log("???");
-    }
-    public void Hitted()
+    public virtual void Hitted()
     {
         data.count--;
         transform.DOPunchScale(new Vector2(0.3f, 0.3f), 0.5f);

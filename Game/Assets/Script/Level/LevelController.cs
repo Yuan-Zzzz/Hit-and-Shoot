@@ -20,6 +20,8 @@ public class LevelController : MonoBehaviour
         {
            var newBrick = Instantiate(item.brick, item.pos, Quaternion.identity);
             newBrick.GetComponent<BrickController>().data.count = item.data.count;
+            newBrick.GetComponent<BrickController>().data.maxCount = item.data.count;
+            newBrick.GetComponent<BrickController>().data.brickColor = item.data.brickColor;
         }
     }
 

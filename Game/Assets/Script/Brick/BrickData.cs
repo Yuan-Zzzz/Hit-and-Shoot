@@ -6,12 +6,9 @@ using UnityEngine;
 public class BrickData
 {
     public int count = 1;
-
-
-    private Color color_3 = new Color(0, 0, 0, 1);
-    private Color color_2 = new Color(0.5f, 0.5f, 0.5f, 1);
-    private Color color_1 = new Color(1, 1,1, 1);
-
+    [HideInInspector]
+    public int maxCount;
+    public Color brickColor;
     
     /// <summary>
     /// 更新砖块
@@ -21,20 +18,9 @@ public class BrickData
     {
         var brickSpriteRenderer = currentBrick.GetComponent<SpriteRenderer>();
         if (brickSpriteRenderer == null) return;
-
-        switch (count)
-        {
-            case 1:
-                brickSpriteRenderer.color = color_1;
-                break;
-            case 2:
-                brickSpriteRenderer.color = color_2;
-                break;
-            case 3:
-                brickSpriteRenderer.color = color_3;
-                break;
-            default:
-                break;
-        }
+        //更新颜色
+        brickSpriteRenderer.color = brickColor;
+        brickSpriteRenderer.color = new Color(brickSpriteRenderer.color.r, brickSpriteRenderer.color.g, brickSpriteRenderer.color.b, count / (float)maxCount);
+        if (brickSpriteRenderer.color.a == 0) brickSpriteRenderer.color = brickSpriteRenderer.color = new Color(brickSpriteRenderer.color.r, brickSpriteRenderer.color.g, brickSpriteRenderer.color.b, 0.1f);
     }
 }
