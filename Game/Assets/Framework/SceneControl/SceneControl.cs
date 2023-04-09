@@ -10,7 +10,11 @@ public class SceneControl : SingletonMono<SceneControl>
 {
     [HideInInspector]
     public int level;
-
+    //protected override void Awake()
+    //{
+    //    base.Awake();
+    //    SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Additive);
+    //}
     /// <summary>
     /// ³¡¾°×ª»»
     /// </summary>

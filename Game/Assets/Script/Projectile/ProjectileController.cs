@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class ProjectileController : MonoBehaviour
     {
         if(CheckCollision(out Collider2D _ohter))
         {
+            Camera.main.transform.DOShakePosition(0.1f, 0.2f);
             if (!_ohter.gameObject.CompareTag(Tags.Ball))
             {
                 PoolManager.Instance.ReturnPool(PoolName.ProjectilePool,this.gameObject);
