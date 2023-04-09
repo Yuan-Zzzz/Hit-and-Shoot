@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelData_4_SO
   m_EditorClassIdentifier: 
   canShoot: 1
-  shootCount: 20
+  shootCount: 10
   bricks:
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
@@ -51,3 +51,27 @@ MonoBehaviour:
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
     pos: {x: 3, y: 2}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 3
+      maxCount: 0
+      brickColor: {r: 0, g: 0, b: 0, a: 0}
+    pos: {x: -7, y: 2}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 3
+      maxCount: 0
+      brickColor: {r: 0, g: 0, b: 0, a: 0}
+    pos: {x: 7, y: 2}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 3
+      maxCount: 0
+      brickColor: {r: 0, g: 0, b: 0, a: 0}
+    pos: {x: 7, y: 3}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 3
+      maxCount: 0
+      brickColor: {r: 0, g: 0, b: 0, a: 0}
+    pos: {x: -7, y: 3}

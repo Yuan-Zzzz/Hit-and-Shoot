@@ -8,5 +8,5 @@ public class BallData_SO : ScriptableObject
     public float gravity;
     public float backlashForce;
     public float maxSpeed;
-    public float count;
+    public int count;
 }

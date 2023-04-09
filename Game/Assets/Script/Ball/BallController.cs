@@ -15,6 +15,7 @@ public class BallController : MonoBehaviour
     [SerializeField]
     private Text CountText;
     private bool canShoot = true;
+    private WaitForSeconds spawnFlashDeltaTime = new WaitForSeconds(0.05f);
     private void Awake()
     {
         ballRB = GetComponent<Rigidbody2D>();
@@ -26,8 +27,11 @@ public class BallController : MonoBehaviour
     {
         EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
         EventManager.Register<int>(EventName.ShootCountInit, OnShootCountInit);
-        PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Projectile"), 10, PoolName.ProjectilePool);
-  
+        PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Projectile"), data.count, PoolName.ProjectilePool);
+        PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Flash"), data.count, PoolName.FlashPool);
+
+        StartCoroutine(SpawnFlash());
+
     }
 
     private void OnShootCountInit(int _shootCount)
@@ -44,6 +48,7 @@ public class BallController : MonoBehaviour
     private void OnDisable()
     {
         PoolManager.Instance.Clear(PoolName.ProjectilePool);
+        PoolManager.Instance.Clear(PoolName.FlashPool);
         EventManager.Remove<bool>(EventName.CanShoot, OnCanShoot);
         EventManager.Remove<int>(EventName.ShootCountInit, OnShootCountInit);
     }
@@ -61,11 +66,24 @@ public class BallController : MonoBehaviour
         {
             TimeManager.StopBulletTime();
             Shoot();
+           
         }
     }
+
+    IEnumerator SpawnFlash()
+    {
+        while (true) { 
+            var newFlash = PoolManager.Instance.GetFromPool(PoolName.FlashPool);
+            newFlash.transform.position = transform.position;
+            yield return spawnFlashDeltaTime;
+        }
+         
+
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-        EventManager.Send(EventName.BallHit, other);
+        EventManager.Send<Collision2D>(EventName.BallHit, other);
         if (other.gameObject.CompareTag(Tags.Platform))
         {
             float x = HitFactor(transform.position, other.transform.position, other.collider.bounds.size.x);
