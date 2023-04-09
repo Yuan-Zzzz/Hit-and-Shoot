@@ -84,6 +84,7 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Instantiate(Resources.Load<GameObject>("Prefabs/Pieces"), transform.position,Quaternion.identity);
         EventManager.Send<Collision2D>(EventName.BallHit, other);
         //¸Ä±äÑÕÉ«
         if (other.gameObject.GetComponent<SpriteRenderer>() != null&& !other.gameObject.CompareTag(Tags.Platform))

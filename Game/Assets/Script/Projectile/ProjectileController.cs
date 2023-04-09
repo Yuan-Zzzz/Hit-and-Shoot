@@ -18,6 +18,7 @@ public class ProjectileController : MonoBehaviour
             Camera.main.transform.DOShakePosition(0.1f, 0.2f);
             if (!_ohter.gameObject.CompareTag(Tags.Ball))
             {
+                Instantiate(Resources.Load<GameObject>("Prefabs/Pieces"), transform.position, Quaternion.identity);
                 PoolManager.Instance.ReturnPool(PoolName.ProjectilePool,this.gameObject);
             }
             _ohter.gameObject.GetComponent<BrickController>()?.Hitted();
