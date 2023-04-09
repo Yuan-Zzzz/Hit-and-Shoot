@@ -43,6 +43,7 @@ public class BrickController : MonoBehaviour
 
     IEnumerator Destory()
     {
+        GetComponent<Collider2D>().enabled = false;
         Tweener punchScale = transform.DOScale(new Vector2(0f,0f),0.15f);
         yield return punchScale.WaitForCompletion();  
         Destroy(gameObject);
