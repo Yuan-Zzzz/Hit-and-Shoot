@@ -26,7 +26,6 @@ public class LevelController : MonoBehaviour
             newBrick.GetComponent<BrickController>().data.brickColor = item.data.brickColor;
         }
     }
-
     private void OnDisable()
     {
         EventManager.Remove<int>(EventName.LoadLevel, OnLoadLevel);
