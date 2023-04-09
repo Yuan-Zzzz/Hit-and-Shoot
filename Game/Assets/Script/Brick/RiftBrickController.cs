@@ -9,7 +9,11 @@ public class RiftBrickController : BrickController
         base.Hitted();
         if (data.count == 0)
         {
-            Instantiate(GameObject.FindGameObjectWithTag(Tags.Ball),transform.position, Quaternion.identity);
+            for (int i = 0; i < data.riftCount; i++)
+            {
+                Instantiate(GameObject.FindGameObjectWithTag(Tags.Ball),transform.position,Quaternion.identity);
+            }
+           
         }
     }
 }

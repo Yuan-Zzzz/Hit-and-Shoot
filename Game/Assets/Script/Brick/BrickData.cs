@@ -9,6 +9,7 @@ public class BrickData
     [HideInInspector]
     public int maxCount;
     public Color brickColor;
+    public int riftCount;
     /// <summary>
     /// ¸üÐÂ×©¿é
     /// </summary>

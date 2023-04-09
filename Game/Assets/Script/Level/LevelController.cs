@@ -26,6 +26,7 @@ public class LevelController : MonoBehaviour
             newBrick.GetComponent<BrickController>().data.count = item.data.count;
             newBrick.GetComponent<BrickController>().data.maxCount = item.data.count;
             newBrick.GetComponent<BrickController>().data.brickColor = item.data.brickColor;
+            newBrick.GetComponent<BrickController>().data.riftCount = item.data.riftCount;
         }
     }
     private void OnDisable()
