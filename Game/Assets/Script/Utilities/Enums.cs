@@ -3,7 +3,7 @@ public enum EventName
     ExitScene,EnterScene,
     BallHit,
     LoadLevel,
-    CanShoot
+    CanShoot,ShootCountInit
 }
 public enum PoolName
 {

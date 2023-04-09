@@ -17,6 +17,7 @@ public class LevelController : MonoBehaviour
     private void OnLoadLevel(int _level)
     {
         EventManager.Send<bool>(EventName.CanShoot, levelDatas[_level - 1].canShoot);
+        EventManager.Send<int>(EventName.ShootCountInit, levelDatas[_level-1].shootCount);
         //¼ÓÔØ×©¿é
         foreach (var item in levelDatas[_level-1].bricks)
         {

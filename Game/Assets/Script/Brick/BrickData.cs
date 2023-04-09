@@ -9,7 +9,6 @@ public class BrickData
     [HideInInspector]
     public int maxCount;
     public Color brickColor;
-    
     /// <summary>
     /// 更新砖块
     /// </summary>
@@ -21,6 +20,6 @@ public class BrickData
         //更新颜色
         brickSpriteRenderer.color = brickColor;
         brickSpriteRenderer.color = new Color(brickSpriteRenderer.color.r, brickSpriteRenderer.color.g, brickSpriteRenderer.color.b, count / (float)maxCount);
-        if (brickSpriteRenderer.color.a == 0) brickSpriteRenderer.color = brickSpriteRenderer.color = new Color(brickSpriteRenderer.color.r, brickSpriteRenderer.color.g, brickSpriteRenderer.color.b, 0.1f);
+        if (brickSpriteRenderer.color.a == 0) brickSpriteRenderer.color = brickSpriteRenderer.color = new Color(brickSpriteRenderer.color.r, brickSpriteRenderer.color.g, brickSpriteRenderer.color.b, 0.2f);
     }
 }

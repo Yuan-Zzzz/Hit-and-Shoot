@@ -25,9 +25,18 @@ public class BallController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
+        EventManager.Register<int>(EventName.ShootCountInit, OnShootCountInit);
         PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Projectile"), 10, PoolName.ProjectilePool);
-        CountText.text = data.count.ToString();
+  
     }
+
+    private void OnShootCountInit(int _shootCount)
+    {
+      data.count = _shootCount;
+        CountText.text = data.count.ToString();
+
+    }
+
     private void Start()
     {
         
@@ -36,6 +45,7 @@ public class BallController : MonoBehaviour
     {
         PoolManager.Instance.Clear(PoolName.ProjectilePool);
         EventManager.Remove<bool>(EventName.CanShoot, OnCanShoot);
+        EventManager.Remove<int>(EventName.ShootCountInit, OnShootCountInit);
     }
 
     private void OnCanShoot(bool _canShoot)
