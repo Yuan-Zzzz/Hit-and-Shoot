@@ -14,7 +14,7 @@ public class BallController : MonoBehaviour
     private BallData_SO data;
     [SerializeField]
     private Text CountText;
-
+    private bool canShoot;
     private void Awake()
     {
         ballRB = GetComponent<Rigidbody2D>();
@@ -24,16 +24,25 @@ public class BallController : MonoBehaviour
 
     private void OnEnable()
     {
+        EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
         PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Projectile"), 10, PoolName.ProjectilePool);
-
         CountText.text = data.count.ToString();
     }
+    private void OnDisable()
+    {
+        EventManager.Remove<bool>(EventName.CanShoot, OnCanShoot);
+    }
 
+    private void OnCanShoot(bool _canShoot)
+    {
+        canShoot = _canShoot;
+        if(!_canShoot)CountText.color = Color.clear;
+    }
     private void Update()
     {
 
-        if (InputManager.ShootPress) TimeManager.LaunchBulletTime(0.1f);
-        if (InputManager.ShootRelease)
+        if (InputManager.ShootPress&&canShoot) TimeManager.LaunchBulletTime(0.1f);
+        if (InputManager.ShootRelease&&canShoot)
         {
             TimeManager.StopBulletTime();
             Shoot();

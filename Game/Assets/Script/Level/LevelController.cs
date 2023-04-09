@@ -16,6 +16,8 @@ public class LevelController : MonoBehaviour
 
     private void OnLoadLevel(int _level)
     {
+        EventManager.Send<bool>(EventName.CanShoot, levelDatas[_level - 1].canShoot);
+        //¼ÓÔØ×©¿é
         foreach (var item in levelDatas[_level-1].bricks)
         {
            var newBrick = Instantiate(item.brick, item.pos, Quaternion.identity);

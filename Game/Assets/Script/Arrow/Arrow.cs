@@ -5,9 +5,24 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-  
 
-   
+
+ 
+
+    private void OnEnable()
+    {
+        EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
+    }
+
+    private void OnCanShoot(bool _canShoot)
+    {
+        if(!_canShoot)GetComponent<SpriteRenderer>().color = Color.clear;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Remove<bool>(EventName.CanShoot, OnCanShoot);
+    }
     void Update()
     {
 

@@ -1,10 +1,28 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DirCircle : MonoBehaviour
 {
+
+    private bool canShoot;
+
+    private void OnEnable()
+    {
+        EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
+    }
+
+    private void OnCanShoot(bool _canShoot)
+    {
+        if (!_canShoot) GetComponent<SpriteRenderer>().color = Color.clear;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Remove<bool>(EventName.CanShoot, OnCanShoot);
+    }
     void Update()
     {
         if (InputManager.ShootPress)
