@@ -24,6 +24,7 @@ public class PlatformController : MonoBehaviour
         if(other.gameObject == this.gameObject)
         {
             transform.DOPunchScale(new Vector2(0.2f, 0.2f), 0.2f);
+            GetComponent<SpriteRenderer>().DOBlendableColor(GameObject.FindGameObjectWithTag(Tags.Ball).GetComponent<SpriteRenderer>().color,1f);
         }
     }
 

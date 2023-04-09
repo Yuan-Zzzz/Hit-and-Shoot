@@ -36,14 +36,14 @@ public class BallController : MonoBehaviour
 
     private void OnShootCountInit(int _shootCount)
     {
-      data.count = _shootCount;
+        data.count = _shootCount;
         CountText.text = data.count.ToString();
 
     }
 
     private void Start()
     {
-        
+
     }
     private void OnDisable()
     {
@@ -56,35 +56,45 @@ public class BallController : MonoBehaviour
     private void OnCanShoot(bool _canShoot)
     {
         canShoot = _canShoot;
-        if(!_canShoot)CountText.color = Color.clear;
+        if (!_canShoot) CountText.color = Color.clear;
     }
     private void Update()
     {
 
-        if (InputManager.ShootPress&&canShoot) TimeManager.LaunchBulletTime(0.1f);
-        if (InputManager.ShootRelease&&canShoot)
+        if (InputManager.ShootPress && canShoot) TimeManager.LaunchBulletTime(0.1f);
+        if (InputManager.ShootRelease && canShoot)
         {
             TimeManager.StopBulletTime();
             Shoot();
-           
+
         }
     }
 
     IEnumerator SpawnFlash()
     {
-        while (true) { 
+        while (true)
+        {
             var newFlash = PoolManager.Instance.GetFromPool(PoolName.FlashPool);
             newFlash.transform.position = transform.position;
             yield return spawnFlashDeltaTime;
         }
-         
+
 
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         EventManager.Send<Collision2D>(EventName.BallHit, other);
-        
+        //改变颜色
+        if (other.gameObject.GetComponent<SpriteRenderer>() != null)
+        {
+            GetComponent<SpriteRenderer>().DOBlendableColor(
+                new Color(
+                other.gameObject.GetComponent<SpriteRenderer>().color.r,
+                other.gameObject.GetComponent<SpriteRenderer>().color.g,
+                other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
+        }
+        //碰到平台反弹
         if (other.gameObject.CompareTag(Tags.Platform))
         {
             float x = HitFactor(transform.position, other.transform.position, other.collider.bounds.size.x);

@@ -7,22 +7,37 @@ using UnityEngine;
 public class DirCircle : MonoBehaviour
 {
 
-    private bool canShoot;
 
     private void OnEnable()
     {
         EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
+        EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
     }
 
     private void OnCanShoot(bool _canShoot)
     {
-        if (!_canShoot) GetComponent<SpriteRenderer>().color = Color.clear;
+        if (!_canShoot) GetComponent<SpriteRenderer>().enabled= false;
     }
 
     private void OnDisable()
     {
         EventManager.Remove<bool>(EventName.CanShoot, OnCanShoot);
+        EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
     }
+
+    private void OnBallHit(Collision2D other)
+    {
+        //¸Ä±äÑÕÉ«
+        if (other.gameObject.GetComponent<SpriteRenderer>() != null)
+        {
+            GetComponent<SpriteRenderer>().DOBlendableColor(
+                new Color(
+                other.gameObject.GetComponent<SpriteRenderer>().color.r,
+                other.gameObject.GetComponent<SpriteRenderer>().color.g,
+                other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
+        }
+    }
+
     void Update()
     {
         if (InputManager.ShootPress)
