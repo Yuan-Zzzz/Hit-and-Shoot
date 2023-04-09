@@ -41,7 +41,11 @@ public class PlatformController : MonoBehaviour
     {
         Move();
     }
-
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+            transform.DOScale(new Vector3(1, 1, 1), 0.1f);
+        
+    }
     private void Move()
     {
         platformRB.velocity = Vector2.MoveTowards(platformRB.velocity,new Vector2(data.maxSpeed*InputManager.Move.x,platformRB.velocity.y),data.acceleration);
