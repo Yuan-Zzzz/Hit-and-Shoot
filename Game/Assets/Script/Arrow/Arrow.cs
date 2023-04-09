@@ -16,7 +16,7 @@ public class Arrow : MonoBehaviour
         private void OnBallHit(Collision2D other)
         {
             //¸Ä±äÑÕÉ«
-            if (other.gameObject.GetComponent<SpriteRenderer>() != null)
+            if (other.gameObject.GetComponent<SpriteRenderer>() != null&& !other.gameObject.CompareTag(Tags.Platform))
             {
                 GetComponent<SpriteRenderer>().DOBlendableColor(
                     new Color(

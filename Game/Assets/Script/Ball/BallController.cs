@@ -86,7 +86,7 @@ public class BallController : MonoBehaviour
     {
         EventManager.Send<Collision2D>(EventName.BallHit, other);
         //¸Ä±äÑÕÉ«
-        if (other.gameObject.GetComponent<SpriteRenderer>() != null)
+        if (other.gameObject.GetComponent<SpriteRenderer>() != null&& !other.gameObject.CompareTag(Tags.Platform))
         {
             GetComponent<SpriteRenderer>().DOBlendableColor(
                 new Color(
