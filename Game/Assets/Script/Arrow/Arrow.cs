@@ -9,22 +9,22 @@ public class Arrow : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
-        EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
+       // EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
     }
 
    
-        private void OnBallHit(Collision2D other)
-        {
-            //改变颜色
-            if (other.gameObject.GetComponent<SpriteRenderer>() != null&& !other.gameObject.CompareTag(Tags.Platform))
-            {
-                GetComponent<SpriteRenderer>().DOBlendableColor(
-                    new Color(
-                    other.gameObject.GetComponent<SpriteRenderer>().color.r,
-                    other.gameObject.GetComponent<SpriteRenderer>().color.g,
-                    other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
-            }
-        }
+        //private void OnBallHit(Collision2D other)
+        //{
+        //    //改变颜色
+        //    if (other.gameObject.GetComponent<SpriteRenderer>() != null&& !other.gameObject.CompareTag(Tags.Platform))
+        //    {
+        //        GetComponent<SpriteRenderer>().DOBlendableColor(
+        //            new Color(
+        //            other.gameObject.GetComponent<SpriteRenderer>().color.r,
+        //            other.gameObject.GetComponent<SpriteRenderer>().color.g,
+        //            other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
+        //    }
+        //}
     
 
     private void OnCanShoot(bool _canShoot)
@@ -35,7 +35,7 @@ public class Arrow : MonoBehaviour
     private void OnDisable()
     {
         EventManager.Remove<bool>(EventName.CanShoot, OnCanShoot);
-        EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
+        //EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
     }
     void Update()
     {

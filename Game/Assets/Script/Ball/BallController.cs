@@ -16,6 +16,8 @@ public class BallController : MonoBehaviour
     private Text CountText;
     private bool canShoot = true;
     private WaitForSeconds spawnFlashDeltaTime = new WaitForSeconds(0.05f);
+    public SpriteRenderer arrowSpriteRenderer;
+    public SpriteRenderer dirCircleSpriteRenderer;
     private void Awake()
     {
         ballRB = GetComponent<Rigidbody2D>();
@@ -75,7 +77,7 @@ public class BallController : MonoBehaviour
         while (true)
         {
             var newFlash = PoolManager.Instance.GetFromPool(PoolName.FlashPool);
-            newFlash.transform.position = transform.position;
+            newFlash.transform.position= transform.position;
             yield return spawnFlashDeltaTime;
         }
 
@@ -96,6 +98,19 @@ public class BallController : MonoBehaviour
                 other.gameObject.GetComponent<SpriteRenderer>().color.r,
                 other.gameObject.GetComponent<SpriteRenderer>().color.g,
                 other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
+
+            arrowSpriteRenderer.DOBlendableColor(
+                new Color(
+                other.gameObject.GetComponent<SpriteRenderer>().color.r,
+                other.gameObject.GetComponent<SpriteRenderer>().color.g,
+                other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
+
+            dirCircleSpriteRenderer.DOBlendableColor(
+                new Color(
+                other.gameObject.GetComponent<SpriteRenderer>().color.r,
+                other.gameObject.GetComponent<SpriteRenderer>().color.g,
+                other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
+
         }
         //碰到平台反弹
         if (other.gameObject.CompareTag(Tags.Platform))

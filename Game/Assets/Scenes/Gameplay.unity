@@ -596,6 +596,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: ef4a1f5f8de08f6409c90d887c38ddbe, type: 2}
   CountText: {fileID: 443026200}
+  arrowSpriteRenderer: {fileID: 1087254379}
+  dirCircleSpriteRenderer: {fileID: 13183414}
 --- !u!1 &778739800
 GameObject:
   m_ObjectHideFlags: 0

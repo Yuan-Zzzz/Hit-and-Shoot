@@ -11,7 +11,8 @@ public class RiftBrickController : BrickController
         {
             for (int i = 0; i < data.riftCount; i++)
             {
-                Instantiate(GameObject.FindGameObjectWithTag(Tags.Ball),transform.position,Quaternion.identity);
+                var newBall = Instantiate(GameObject.FindGameObjectWithTag(Tags.Ball),transform.position,Quaternion.identity);
+                newBall.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
             }
            
         }
