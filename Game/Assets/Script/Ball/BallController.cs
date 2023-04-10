@@ -86,6 +86,7 @@ public class BallController : MonoBehaviour
     {
         var newPieces = PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
         newPieces.transform.position = transform.position;
+        newPieces.GetComponent<ParticleSystem>().startColor = GetComponent<SpriteRenderer>().color;
         EventManager.Send<Collision2D>(EventName.BallHit, other);
         //¸Ä±äÑÕÉ«
         if (other.gameObject.GetComponent<SpriteRenderer>() != null&& !other.gameObject.CompareTag(Tags.Platform))
@@ -131,6 +132,7 @@ public class BallController : MonoBehaviour
         var newProjectile = PoolManager.Instance.GetFromPool(PoolName.ProjectilePool);
         newProjectile.GetComponent<ProjectileController>().SetAngle(-dir);
         newProjectile.transform.position = transform.position;
+        newProjectile.GetComponent<SpriteRenderer>().DOBlendableColor(GetComponent<SpriteRenderer>().color, 0.1f);
         ballRB.velocity = Vector2.zero;
 
         ballRB.AddForce(dir * data.backlashForce, ForceMode2D.Force);

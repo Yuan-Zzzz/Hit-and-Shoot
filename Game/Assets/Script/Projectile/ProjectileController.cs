@@ -26,6 +26,7 @@ public class ProjectileController : MonoBehaviour
             {
                 var newPieces = PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
                 newPieces.transform.position = transform.position;
+                newPieces.GetComponent<ParticleSystem>().startColor = GetComponent<SpriteRenderer>().color;
                 StartCoroutine(ReturnPool());
                 isHit = true;
             }
