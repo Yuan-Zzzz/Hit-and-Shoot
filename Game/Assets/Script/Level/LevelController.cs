@@ -8,7 +8,6 @@ public class LevelController : MonoBehaviour
 
 
     public List<LevelData_SO> levelDatas = new List<LevelData_SO>();
-
     private void OnEnable()
     {
         EventManager.Register<int>(EventName.LoadLevel, OnLoadLevel);
@@ -19,6 +18,8 @@ public class LevelController : MonoBehaviour
         if(_level<=0)return;
         EventManager.Send<bool>(EventName.CanShoot, levelDatas[_level - 1].canShoot);
         EventManager.Send<int>(EventName.ShootCountInit, levelDatas[_level-1].shootCount);
+        //º”‘ÿµØ«Ú
+        if(GameObject.FindGameObjectWithTag(Tags.Ball)!=null) GameObject.FindGameObjectWithTag(Tags.Ball).transform.position =  levelDatas[_level - 1].ballPosition;
         //º”‘ÿ◊©øÈ
         foreach (var item in levelDatas[_level-1].bricks)
         {

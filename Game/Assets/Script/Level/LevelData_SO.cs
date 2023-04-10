@@ -8,6 +8,8 @@ public class LevelData_SO : ScriptableObject
     public bool canShoot;
     [Header("当前关卡初始的射击次数")]
     public int shootCount;
+    //当前关卡的弹球初始位置
+    public Vector2 ballPosition;
     //当前关卡的砖块
     public List<SingleBrickData> bricks = new List<SingleBrickData>();
    
