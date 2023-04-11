@@ -1,7 +1,7 @@
 public enum EventName
 {
     ExitScene,EnterScene,
-    BallHit,
+    BallHit,BallDead,
     LoadLevel,
     CanShoot,ShootCountInit
 }
@@ -11,5 +11,10 @@ public enum PoolName
 }
 public enum AudioName
 {
+
+}
+public enum GameState
+{
+    Pause,Gameplay
 
 }

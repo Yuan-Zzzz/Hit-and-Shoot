@@ -70,11 +70,22 @@ public class BallController : MonoBehaviour
             Shoot();
 
         }
-    }
 
+        if (CheckBallDead) StartCoroutine(DestoryBall());
+    }
+    IEnumerator DestoryBall()
+    {
+        Tweener t1 = transform.DOScale(new Vector2(0f, 0f), 0.15f);
+        TimeManager.LaunchBulletTime(0.08f);
+        yield return t1.WaitForCompletion();
+        TimeManager.StopBulletTime();
+        PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
+        this.gameObject.SetActive(false);
+        EventManager.Send(EventName.BallDead);
+    }
     IEnumerator SpawnFlash()
     {
-        while (true)
+        while (!CheckBallDead)
         {
             var newFlash = PoolManager.Instance.GetFromPool(PoolName.FlashPool);
             newFlash.transform.position= transform.position;
@@ -82,6 +93,21 @@ public class BallController : MonoBehaviour
         }
 
 
+    }
+
+    public bool CheckBallDead
+    {
+        get
+        {
+            if (data.count <= 0 || transform.position.y < -5.6f)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

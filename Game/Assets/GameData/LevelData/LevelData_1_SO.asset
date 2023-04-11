@@ -13,95 +13,111 @@ MonoBehaviour:
   m_Name: LevelData_1_SO
   m_EditorClassIdentifier: 
   canShoot: 0
-  shootCount: 0
+  shootCount: 1
+  ballPosition: {x: 0, y: 0}
   bricks:
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: -7, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: -6, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: -5, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: -4, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: -3, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: -2, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: -1, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: 0, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: 1, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: 2, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: 3, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: 4, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: 5, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: 6, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 0}
+      riftCount: 0
     pos: {x: 7, y: 3}

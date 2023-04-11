@@ -24,7 +24,7 @@ public class SceneControl : SingletonMono<SceneControl>
     {
         StartCoroutine(TransitionScene(_from, _to));
     }
-
+    
     IEnumerator TransitionScene(string _from,string _to)
     {
         //–∂‘ÿfrom≥°æ∞
