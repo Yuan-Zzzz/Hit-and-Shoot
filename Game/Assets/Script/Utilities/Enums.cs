@@ -3,7 +3,8 @@ public enum EventName
     ExitScene,EnterScene,
     BallHit,BallDead,
     LoadLevel,
-    CanShoot,ShootCountInit
+    CanShoot,ShootCountInit,
+    EnterBulletTime,ExitBulletTime
 }
 public enum PoolName
 {

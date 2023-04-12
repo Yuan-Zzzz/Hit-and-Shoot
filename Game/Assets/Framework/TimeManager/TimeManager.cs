@@ -9,13 +9,14 @@ public static class TimeManager
 
    public static void LaunchBulletTime(float _bulletTimeScale)
     {
-       
+
+        EventManager.Send(EventName.EnterBulletTime);
         Time.timeScale = _bulletTimeScale;
         Time.fixedDeltaTime = defaultFixedDeltaTime*_bulletTimeScale;
-        
     }
     public static void StopBulletTime()
     {
+        EventManager.Send(EventName.ExitBulletTime);
         Time.timeScale = 1f;
         Time.fixedDeltaTime = defaultFixedDeltaTime;
     }

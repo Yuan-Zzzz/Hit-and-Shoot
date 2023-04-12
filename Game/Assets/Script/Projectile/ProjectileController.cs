@@ -15,6 +15,10 @@ public class ProjectileController : MonoBehaviour
     private void OnEnable()
     {
         isHit = false;
+        GetComponent<SpriteRenderer>().color = new Color(
+            GetComponent<SpriteRenderer>().color.r,
+            GetComponent<SpriteRenderer>().color.g,
+            GetComponent<SpriteRenderer>().color.b, 1f);
     }
     private void FixedUpdate()
     {
@@ -24,6 +28,7 @@ public class ProjectileController : MonoBehaviour
             Camera.main.transform.DOShakePosition(0.1f, 0.2f);
             if (!_ohter.gameObject.CompareTag(Tags.Ball))
             {
+                transform.DOShakePosition(0.1f, 0.2f);
                 AudioManager.Instance.Play(AudioName.BulletHit_2);
                 var newPieces = PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
                 newPieces.transform.position = transform.position;
@@ -62,9 +67,12 @@ public class ProjectileController : MonoBehaviour
     {
        
         Tweener punchScale1 = transform.DOScale(new Vector2(1.5f, 1.5f), 0.06f);
-        Tweener punchScale2 = transform.DOScale(new Vector2(0.5f, 0.5f), 0.06f);
+        GetComponent<SpriteRenderer>().DOColor(new Color(
+            GetComponent<SpriteRenderer>().color.r,
+            GetComponent<SpriteRenderer>().color.g,
+            GetComponent<SpriteRenderer>().color.b, 0f), 0.06f);
         yield return punchScale1.WaitForCompletion();
-        yield return punchScale2.WaitForCompletion();
+       
         PoolManager.Instance.ReturnPool(PoolName.ProjectilePool, this.gameObject);
     }
 }
