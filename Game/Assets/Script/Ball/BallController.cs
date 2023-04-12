@@ -29,13 +29,11 @@ public class BallController : MonoBehaviour
     {
         EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
         EventManager.Register<int>(EventName.ShootCountInit, OnShootCountInit);
-        PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Projectile"), data.count, PoolName.ProjectilePool);
-        PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Flash"), data.count, PoolName.FlashPool);
-
+ 
         StartCoroutine(SpawnFlash());
 
     }
-
+    
     private void OnShootCountInit(int _shootCount)
     {
         data.count = _shootCount;
@@ -45,7 +43,8 @@ public class BallController : MonoBehaviour
 
     private void Start()
     {
-
+        PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Projectile"), data.count, PoolName.ProjectilePool);
+        PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Flash"), data.count, PoolName.FlashPool);
     }
     private void OnDisable()
     {
@@ -62,10 +61,11 @@ public class BallController : MonoBehaviour
     }
     private void Update()
     {
-
+        if(InputManager.ShootPerformed&&canShoot) AudioManager.Instance.Play(AudioName.BulletTime);
         if (InputManager.ShootPress && canShoot) TimeManager.LaunchBulletTime(0.1f);
         if (InputManager.ShootRelease && canShoot)
         {
+            AudioManager.Instance.Stop(AudioName.BulletTime);
             TimeManager.StopBulletTime();
             Shoot();
 
@@ -76,12 +76,12 @@ public class BallController : MonoBehaviour
     IEnumerator DestoryBall()
     {
         Tweener t1 = transform.DOScale(new Vector2(0f, 0f), 0.15f);
-        TimeManager.LaunchBulletTime(0.08f);
+        TimeManager.LaunchBulletTime(0.1f);
         yield return t1.WaitForCompletion();
         TimeManager.StopBulletTime();
         PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
         this.gameObject.SetActive(false);
-        EventManager.Send(EventName.BallDead);
+        EventManager.Send<Vector2>(EventName.BallDead,(Vector2)transform.position);
     }
     IEnumerator SpawnFlash()
     {
@@ -116,6 +116,7 @@ public class BallController : MonoBehaviour
         newPieces.transform.position = transform.position;
         newPieces.GetComponent<ParticleSystem>().startColor = GetComponent<SpriteRenderer>().color;
         EventManager.Send<Collision2D>(EventName.BallHit, other);
+        AudioManager.Instance.Play(AudioName.Hit_2);
         //改变颜色
         if (other.gameObject.GetComponent<SpriteRenderer>() != null&& !other.gameObject.CompareTag(Tags.Platform))
         {
@@ -141,13 +142,14 @@ public class BallController : MonoBehaviour
         //碰到平台反弹
         if (other.gameObject.CompareTag(Tags.Platform))
         {
+            AudioManager.Instance.Play(AudioName.Hit_1);
             float x = HitFactor(transform.position, other.transform.position, other.collider.bounds.size.x);
 
             ballRB.velocity = new Vector2(x, 1).normalized * data.maxSpeed;
         }
 
         transform.DOPunchScale(new Vector2(0.2f, 0.2f), 0.1f);
-        Camera.main.transform.DOShakePosition(0.1f, 0.2f);
+       
     }
     private void OnCollisionExit2D(Collision2D collision)
     {

@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -391,11 +392,23 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc07d057fa1956a47921eeacd141071d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,11 +551,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioTypes:
   - source: {fileID: 0}
-    clip: {fileID: 0}
-    group: {fileID: 0}
+    clip: {fileID: 8300000, guid: 2ea35115bfe00744ba70a30c0b8ea4fe, type: 3}
+    group: {fileID: 24300002, guid: 1f8eaddc7b57089429b4137d2c582ab0, type: 2}
     name: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
+    loop: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: ef3c326390747a045a4d20c713102f3a, type: 3}
+    group: {fileID: 24300002, guid: 1f8eaddc7b57089429b4137d2c582ab0, type: 2}
+    name: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 82d9f3fe6f14b9341a28ac60edb3bf86, type: 3}
+    group: {fileID: 0}
+    name: 2
+    volume: 0.165
+    pitch: 1
     loop: 0
 --- !u!4 &1384126882
 Transform:

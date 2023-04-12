@@ -9,8 +9,10 @@ public static class TimeManager
 
    public static void LaunchBulletTime(float _bulletTimeScale)
     {
+       
         Time.timeScale = _bulletTimeScale;
         Time.fixedDeltaTime = defaultFixedDeltaTime*_bulletTimeScale;
+        
     }
     public static void StopBulletTime()
     {
