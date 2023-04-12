@@ -15,6 +15,7 @@ public class LevelController : MonoBehaviour
 
     private void OnLoadLevel(int _level)
     {
+        StopAllCoroutines();
         TimeManager.StopBulletTime();
         if(_level<=0)return;
         EventManager.Send<bool>(EventName.CanShoot, levelDatas[_level - 1].canShoot);

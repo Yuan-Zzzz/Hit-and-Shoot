@@ -27,10 +27,12 @@ public class BallController : MonoBehaviour
 
     private void OnEnable()
     {
+        
+       
         EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
         EventManager.Register<int>(EventName.ShootCountInit, OnShootCountInit);
  
-        StartCoroutine(SpawnFlash());
+       
 
     }
     
@@ -43,13 +45,12 @@ public class BallController : MonoBehaviour
 
     private void Start()
     {
-        PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Projectile"), data.count, PoolName.ProjectilePool);
-        PoolManager.Instance.CreateNewPool(Resources.Load<GameObject>("Prefabs/Flash"), data.count, PoolName.FlashPool);
+        StartCoroutine(SpawnFlash());
     }
+   
     private void OnDisable()
     {
-        PoolManager.Instance.Clear(PoolName.ProjectilePool);
-        PoolManager.Instance.Clear(PoolName.FlashPool);
+       
         EventManager.Remove<bool>(EventName.CanShoot, OnCanShoot);
         EventManager.Remove<int>(EventName.ShootCountInit, OnShootCountInit);
     }
@@ -79,8 +80,9 @@ public class BallController : MonoBehaviour
         TimeManager.LaunchBulletTime(0.1f);
         yield return t1.WaitForCompletion();
         TimeManager.StopBulletTime();
-        PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
-        this.gameObject.SetActive(false);
+       var newPieces  = PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
+        newPieces.transform.position = transform.position;
+       gameObject.SetActive(false);
         EventManager.Send<Vector2>(EventName.BallDead,(Vector2)transform.position);
     }
     IEnumerator SpawnFlash()
@@ -171,6 +173,7 @@ public class BallController : MonoBehaviour
 
     private void Shoot()
     {
+        AudioManager.Instance.Play(AudioName.BulletHit_1);
         Vector2 dir = ((Vector2)(transform.position - Camera.main.ScreenToWorldPoint(InputManager.MousePos))).normalized;
         var newProjectile = PoolManager.Instance.GetFromPool(PoolName.ProjectilePool);
         newProjectile.GetComponent<ProjectileController>().SetAngle(-dir);

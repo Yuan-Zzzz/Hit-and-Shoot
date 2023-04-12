@@ -20,10 +20,11 @@ public class ProjectileController : MonoBehaviour
     {
         if(CheckCollision(out Collider2D _ohter)&&!isHit)
         {
-            
+           
             Camera.main.transform.DOShakePosition(0.1f, 0.2f);
             if (!_ohter.gameObject.CompareTag(Tags.Ball))
             {
+                AudioManager.Instance.Play(AudioName.BulletHit_2);
                 var newPieces = PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
                 newPieces.transform.position = transform.position;
                 newPieces.GetComponent<ParticleSystem>().startColor = GetComponent<SpriteRenderer>().color;

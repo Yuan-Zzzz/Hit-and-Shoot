@@ -12,7 +12,14 @@ public class CameraController : MonoBehaviour
         EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
         EventManager.Register<Vector2>(EventName.BallDead, OnBallDead);
     }
-
+    private void RecoveryPosition()
+    {
+        transform.DOMove(new Vector3(0, 0, transform.position.z), 0.2f);
+    }
+    private void Update()
+    {
+        Invoke("RecoveryPosition", 1f);
+    }
     private void OnBallHit(Collision2D _other)
     {
         transform.DOShakePosition(0.1f, 0.2f);
