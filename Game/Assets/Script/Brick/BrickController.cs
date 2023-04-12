@@ -26,6 +26,7 @@ public class BrickController : MonoBehaviour
       if(other.gameObject == this.gameObject)
         {
             Hitted();
+            AudioManager.Instance.Play(AudioName.GetScore);
         }
     }
     public virtual void Hitted()

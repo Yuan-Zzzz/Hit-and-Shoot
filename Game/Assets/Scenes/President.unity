@@ -598,6 +598,13 @@ MonoBehaviour:
     volume: 1
     pitch: 0.5
     loop: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 31c1288f55ad80b4db49f38b8a1fdda1, type: 3}
+    group: {fileID: 0}
+    name: 5
+    volume: 0
+    pitch: 0.6
+    loop: 0
 --- !u!4 &1384126882
 Transform:
   m_ObjectHideFlags: 0
