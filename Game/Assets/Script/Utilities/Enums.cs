@@ -4,7 +4,8 @@ public enum EventName
     BallHit,BallDead,
     LoadLevel,
     CanShoot,ShootCountInit,
-    EnterBulletTime,ExitBulletTime
+    EnterBulletTime,ExitBulletTime,
+    GamePass
 }
 public enum PoolName
 {

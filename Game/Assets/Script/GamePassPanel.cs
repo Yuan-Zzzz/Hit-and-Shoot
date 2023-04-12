@@ -3,31 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOverPanel : MonoBehaviour
+public class GamePassPanel : MonoBehaviour
 {
+    public CanvasGroup canvasGroup;
+    private void OnEnable()
+    {
+        EventManager.Register(EventName.GamePass, OnGamePass);
 
-   public CanvasGroup canvasGroup;
+    }
     private void Start()
     {
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }
-    private void OnEnable()
+    private void OnGamePass()
     {
-        EventManager.Register<Vector2>(EventName.BallDead, OnBallDead);
-    }
 
-    private void OnBallDead(Vector2 _position)
-    {
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
         TimeManager.TimeStop();
+
     }
 
     private void OnDisable()
     {
-        EventManager.Remove<Vector2>(EventName.BallDead, OnBallDead);
+
+        EventManager.Remove(EventName.GamePass, OnGamePass);
     }
 }

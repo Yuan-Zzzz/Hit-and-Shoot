@@ -20,7 +20,14 @@ public static class TimeManager
         Time.timeScale = 1f;
         Time.fixedDeltaTime = defaultFixedDeltaTime;
     }
-
+    public static void TimeStop()
+    {
+        Time.timeScale = 0;
+    }
+    public static void NormalTime()
+    {
+        Time.timeScale = 1f;
+    }
   
 }
 

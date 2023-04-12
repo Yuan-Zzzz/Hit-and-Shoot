@@ -15,8 +15,9 @@ public class LevelController : MonoBehaviour
 
     private void OnLoadLevel(int _level)
     {
+        
         StopAllCoroutines();
-        TimeManager.StopBulletTime();
+        TimeManager.NormalTime();
         if(_level<=0)return;
         EventManager.Send<bool>(EventName.CanShoot, levelDatas[_level - 1].canShoot);
         EventManager.Send<int>(EventName.ShootCountInit, levelDatas[_level-1].shootCount);
@@ -30,6 +31,13 @@ public class LevelController : MonoBehaviour
             newBrick.GetComponent<BrickController>().data.maxCount = item.data.count;
             newBrick.GetComponent<BrickController>().data.brickColor = item.data.brickColor;
             newBrick.GetComponent<BrickController>().data.riftCount = item.data.riftCount;
+        }
+    }
+    private void Update()
+    {
+        if (!GameObject.FindObjectOfType<BrickController>())
+        {
+            EventManager.Send(EventName.GamePass);
         }
     }
     private void OnDisable()
