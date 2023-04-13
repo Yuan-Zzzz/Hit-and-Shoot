@@ -62,11 +62,16 @@ public class BallController : MonoBehaviour
     }
     private void Update()
     {
-        if (InputManager.ShootPerformed && canShoot) AudioManager.Instance.Play(AudioName.BulletTime);
+        if (InputManager.ShootPerformed && canShoot)
+        {
+            AudioManager.Instance.Play(AudioName.BulletTime);
+            AudioManager.Instance.Pause(AudioName.BGM);
+        }
         if (InputManager.ShootPress && canShoot) TimeManager.LaunchBulletTime(0.1f);
         if (InputManager.ShootRelease && canShoot)
         {
             AudioManager.Instance.Stop(AudioName.BulletTime);
+            AudioManager.Instance.Play(AudioName.BGM);
             TimeManager.StopBulletTime();
             Shoot();
 

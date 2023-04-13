@@ -23,7 +23,8 @@ public class GamePassPanel : MonoBehaviour
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
-      StartCoroutine(TimeManager.StopTimeAfterSecond(0.5f));
+        AudioManager.Instance.Pause(AudioName.BGM);
+        StartCoroutine(TimeManager.StopTimeAfterSecond(0.5f));
 
     }
 

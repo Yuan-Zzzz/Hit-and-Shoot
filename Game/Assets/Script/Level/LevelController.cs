@@ -15,7 +15,7 @@ public class LevelController : MonoBehaviour
 
     private void OnLoadLevel(int _level)
     {
-        
+        AudioManager.Instance.Play(AudioName.BGM);
         StopAllCoroutines();
         TimeManager.NormalTime();
         if(_level<=0)return;

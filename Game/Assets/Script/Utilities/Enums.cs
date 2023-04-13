@@ -13,7 +13,7 @@ public enum PoolName
 }
 public enum AudioName
 {
-    Hit_1,Hit_2,BulletTime,BulletHit_1,BulletHit_2,GetScore
+    Hit_1,Hit_2,BulletTime,BulletHit_1,BulletHit_2,GetScore,BGM
 }
 public enum GameState
 {

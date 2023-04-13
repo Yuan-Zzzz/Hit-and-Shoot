@@ -247,7 +247,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!224 &258315298
 RectTransform:
@@ -279,7 +279,7 @@ CanvasGroup:
   m_GameObject: {fileID: 258315294}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
+  m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &310914134
@@ -796,6 +796,13 @@ MonoBehaviour:
     volume: 0
     pitch: 0.6
     loop: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: b01ad16743fbee547a8b72faf06f182b, type: 3}
+    group: {fileID: 0}
+    name: 6
+    volume: 1
+    pitch: 1
+    loop: 1
 --- !u!4 &1384126882
 Transform:
   m_ObjectHideFlags: 0
