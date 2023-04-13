@@ -34,16 +34,18 @@ public class SceneControl : SingletonMono<SceneControl>
     IEnumerator TransitionScene(string _from,string _to)
     {
         //–∂‘ÿfrom≥°æ∞
-        EventManager.Send(EventName.EnterScene);
         yield return Fade(1f);
+        EventManager.Send(EventName.EnterScene);
+        
         yield return SceneManager.UnloadSceneAsync(_from);
         //º”‘ÿto≥°æ∞
         yield return SceneManager.LoadSceneAsync(_to,LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneAt(SceneManager.sceneCount - 1));
        
         EventManager.Send(EventName.ExitScene);
-        yield return Fade(0f);
+        
         if (_to == "Gameplay") EventManager.Send<int>(EventName.LoadLevel,level);
+        yield return Fade(0f);
     }
 
     IEnumerator Fade(float targetAlpha)
