@@ -1,5 +1,7 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,11 +12,15 @@ public class SceneControl : SingletonMono<SceneControl>
 {
     [HideInInspector]
     public int level;
-    //protected override void Awake()
-    //{
-    //    base.Awake();
-    //    SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Additive);
-    //}
+    public CanvasGroup fadeCanvasGroup;
+    public float fadeDuration;
+    private bool isFade;
+    protected override void Awake()
+    {
+        base.Awake();
+        //SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Additive);
+       
+    }
     /// <summary>
     /// 场景转换
     /// </summary>
@@ -24,17 +30,39 @@ public class SceneControl : SingletonMono<SceneControl>
     {
         StartCoroutine(TransitionScene(_from, _to));
     }
-    
+   
     IEnumerator TransitionScene(string _from,string _to)
     {
         //卸载from场景
         EventManager.Send(EventName.EnterScene);
+        yield return Fade(1f);
         yield return SceneManager.UnloadSceneAsync(_from);
         //加载to场景
         yield return SceneManager.LoadSceneAsync(_to,LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneAt(SceneManager.sceneCount - 1));
+       
         EventManager.Send(EventName.ExitScene);
-
+        yield return Fade(0f);
         if (_to == "Gameplay") EventManager.Send<int>(EventName.LoadLevel,level);
+    }
+
+    IEnumerator Fade(float targetAlpha)
+    {
+        isFade = true;
+        //阻止射线碰撞
+        fadeCanvasGroup.blocksRaycasts = true;
+        float speed = Mathf.Abs(targetAlpha - fadeCanvasGroup.alpha) / fadeDuration;
+        //当透明度值与目标值相同(相似)时,结束渐变，恢复射线碰撞
+        while (!Mathf.Approximately(fadeCanvasGroup.alpha, targetAlpha))
+        {
+            //渐变操作
+            fadeCanvasGroup.alpha = Mathf.MoveTowards(fadeCanvasGroup.alpha, targetAlpha, speed * Time.deltaTime);
+            yield return null;
+        }
+
+        fadeCanvasGroup.alpha = targetAlpha;
+        fadeCanvasGroup.blocksRaycasts = false;
+        isFade = false;
+
     }
 }
