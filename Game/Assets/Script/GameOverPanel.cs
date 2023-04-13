@@ -23,7 +23,8 @@ public class GameOverPanel : MonoBehaviour
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
-        TimeManager.TimeStop();
+        //TimeManager.TimeStop();
+        StartCoroutine(TimeManager.StopTimeAfterSecond(0.5f));
     }
 
     private void OnDisable()

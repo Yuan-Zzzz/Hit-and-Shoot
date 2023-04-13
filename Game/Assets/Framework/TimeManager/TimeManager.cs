@@ -24,6 +24,11 @@ public static class TimeManager
     {
         Time.timeScale = 0;
     }
+    public static IEnumerator  StopTimeAfterSecond(float _second)
+    {
+        yield return new WaitForSecondsRealtime(_second);
+        TimeStop();
+    }
     public static void NormalTime()
     {
         Time.timeScale = 1f;

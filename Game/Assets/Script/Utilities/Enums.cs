@@ -1,7 +1,7 @@
 public enum EventName
 {
     ExitScene,EnterScene,
-    BallHit,BallDead,
+    BallHit,BallDead,PrepareDistoryBall,
     LoadLevel,
     CanShoot,ShootCountInit,
     EnterBulletTime,ExitBulletTime,

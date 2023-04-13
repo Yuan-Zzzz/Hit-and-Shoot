@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     {
         EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
         EventManager.Register<Vector2>(EventName.BallDead, OnBallDead);
+        EventManager.Register<Vector2>(EventName.PrepareDistoryBall, OnPrepareDistoryBall);
     }
     private void RecoveryPosition()
     {
@@ -26,33 +27,27 @@ public class CameraController : MonoBehaviour
     }
     private void OnBallDead(Vector2 _position)
     {
-        //StartCoroutine(CloseUpShot(_position));
-
+        transform.DOMove(new Vector3(0, 0, transform.position.z), 0.1f);
+        //Camera.main.orthographicSize = 5;
     }
-    //IEnumerator CloseUpShot(Vector2 _position)
-    //{
-    //    transform.DOMove(new Vector3(_position.x, _position.y, transform.position.z), 0.001f);
-       
-    //    while (GetComponent<Camera>().orthographicSize != 1)
-    //    {
-            
-    //        GetComponent<Camera>().orthographicSize = Mathf.MoveTowards(GetComponent<Camera>().orthographicSize, 1f, 0.1f);
-    //        yield return new WaitForEndOfFrame();
-    //    }
-    //    TimeManager.LaunchBulletTime(0.1f);
-    //    while (GetComponent<Camera>().orthographicSize != 5)
-    //    {
-    //        GetComponent<Camera>().orthographicSize = Mathf.MoveTowards(GetComponent<Camera>().orthographicSize, 5f, 0.1f);
-    //        yield return new WaitForEndOfFrame();
-    //    }
-    //    TimeManager.StopBulletTime();
-    //    transform.DOMove(new Vector3(0, 0, transform.position.z), 0.01f);
-    //}
+    private void OnPrepareDistoryBall(Vector2 _position)
+    {
+        transform.DOMove(new Vector3(_position.x, _position.y, transform.position.z), 0.01f);
+       // StartCoroutine(FadeIn());
+    }
+    IEnumerator FadeIn()
+    {
+        while (Camera.main.orthographicSize>1f) {
+           Camera.main.orthographicSize =  Mathf.MoveTowards(Camera.main.orthographicSize,1f,0.1f);
+            yield return new WaitForFixedUpdate();
+        }
+    }
     private void OnDisable()
     {
         EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
         EventManager.Remove<Vector2>(EventName.BallDead, OnBallDead);
+        EventManager.Remove<Vector2>(EventName.PrepareDistoryBall, OnPrepareDistoryBall);
     }
 
-  
+    
 }
