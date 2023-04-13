@@ -87,7 +87,7 @@ public class BallController : MonoBehaviour
         TimeManager.StopBulletTime();
         var newPieces = PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
         newPieces.transform.position = transform.position;
-        gameObject.SetActive(false);
+        Destroy(this.gameObject);
         EventManager.Send<Vector2>(EventName.BallDead, (Vector2)transform.position);
         AudioManager.Instance.Play(AudioName.Hit_2);
         isCoroutineRunning = false;
@@ -108,6 +108,7 @@ public class BallController : MonoBehaviour
     {
         get
         {
+
             if (data.count <= 0 || transform.position.y < -5.6f)
             {
                 return true;

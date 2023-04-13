@@ -15,10 +15,10 @@ public class GameOverPanel : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventManager.Register<Vector2>(EventName.BallDead, OnBallDead);
+        EventManager.Register(EventName.GameOver, OnGameOver);
     }
 
-    private void OnBallDead(Vector2 _position)
+    private void OnGameOver()
     {
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
@@ -29,6 +29,6 @@ public class GameOverPanel : MonoBehaviour
 
     private void OnDisable()
     {
-        EventManager.Remove<Vector2>(EventName.BallDead, OnBallDead);
+        EventManager.Remove(EventName.GameOver, OnGameOver);
     }
 }

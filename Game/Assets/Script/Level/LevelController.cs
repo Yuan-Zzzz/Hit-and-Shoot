@@ -33,11 +33,19 @@ public class LevelController : MonoBehaviour
             newBrick.GetComponent<BrickController>().data.riftCount = item.data.riftCount;
         }
     }
+   public void NextLevel()
+    {
+        SceneControl.Instance.level++;
+    }
     private void Update()
     {
         if (!GameObject.FindObjectOfType<BrickController>())
         {
             EventManager.Send(EventName.GamePass);
+        }
+        if (!GameObject.FindObjectOfType<BallController>())
+        {
+            EventManager.Send(EventName.GameOver);
         }
     }
     private void OnDisable()

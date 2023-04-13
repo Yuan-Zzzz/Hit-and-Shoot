@@ -1493,6 +1493,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0f4a32446c0ad643a88dc62a932d0fd, type: 2}
   - {fileID: 11400000, guid: b5a55f432f993644ab98e170d4658228, type: 2}
   - {fileID: 11400000, guid: 0cf6213a3771dde44b1fed9bb4d0ed0c, type: 2}
+  - {fileID: 11400000, guid: f79fa86466b7ba84989db1f11504ddf6, type: 2}
 --- !u!4 &930412780
 Transform:
   m_ObjectHideFlags: 0
@@ -2950,6 +2951,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 930412779}
+        m_TargetAssemblyTypeName: LevelController, Assembly-CSharp
+        m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2009779609}
         m_TargetAssemblyTypeName: Transition, Assembly-CSharp
         m_MethodName: TransitionToScene
