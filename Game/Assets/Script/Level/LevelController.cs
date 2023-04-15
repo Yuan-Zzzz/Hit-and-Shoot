@@ -12,6 +12,7 @@ public class LevelController : MonoBehaviour
     {
         EventManager.Register<int>(EventName.LoadLevel, OnLoadLevel);
     }
+   
 
     private void OnLoadLevel(int _level)
     {

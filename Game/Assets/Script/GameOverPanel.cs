@@ -7,6 +7,7 @@ public class GameOverPanel : MonoBehaviour
 {
 
    public CanvasGroup canvasGroup;
+
     private void Start()
     {
         canvasGroup.alpha = 0;
