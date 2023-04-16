@@ -12,7 +12,7 @@ public class LevelEditor : EditorWindow
     private static VisualElement rightPane;
     private static ListView leftPane;
 
-    private const int brickSize = 50;
+    private const int brickSize = 40;
     private const int levelHeight = 10;
     private const int levelWidth = 17;
 
@@ -38,7 +38,7 @@ public class LevelEditor : EditorWindow
             allObjects.Add(AssetDatabase.LoadAssetAtPath<LevelData_SO>(AssetDatabase.GUIDToAssetPath(guid)));
         }
         //´´½¨´°¿Ú
-        var splitView1 = new TwoPaneSplitView(0, 150, TwoPaneSplitViewOrientation.Horizontal);
+        var splitView1 = new TwoPaneSplitView(0, 100, TwoPaneSplitViewOrientation.Horizontal);
 
         rootVisualElement.Add(splitView1);
 
