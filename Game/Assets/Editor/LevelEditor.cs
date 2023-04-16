@@ -76,8 +76,6 @@ public class LevelEditor : EditorWindow
                 holderButton.style.left = i * brickSize;
                 holderButton.style.top = j * brickSize;
 
-                //设置按钮坐标对应实际砖块坐标
-                holderButton.userData = new Vector2(i - (int)levelWidth / 2, -j + (int)levelHeight / 2);
                 //holderButton.tooltip = i + "," + j;
                 rightPane.Add(holderButton);
                 //绘制砖块
@@ -94,6 +92,8 @@ public class LevelEditor : EditorWindow
 
                         holderButton.clicked += () =>
                         {
+                            
+                            holderButton.userData = brick;
                             var window = new BrickEditorWindow(holderButton.userData);
                             window.ShowModal();
                         };
@@ -110,10 +110,10 @@ public class LevelEditor : EditorWindow
 
     public class BrickEditorWindow : EditorWindow
     {
-        Vector2 pos;
-        public BrickEditorWindow(object _pos)
+        SingleBrickData currentBrick;
+        public BrickEditorWindow(object _currentBrickData)
         {
-            pos = (Vector2)_pos;
+            currentBrick = (SingleBrickData)_currentBrickData;
         }
         private void OnEnable()
         {
@@ -141,7 +141,15 @@ public class LevelEditor : EditorWindow
         private void CreateGUI()
         {
             rootVisualElement.Add(new Label("所选砖块位置"));
-            rootVisualElement.Add(new Label(pos.x + " " + pos.y));
+            rootVisualElement.Add(new Label(currentBrick.pos.x + " " + currentBrick.pos.y));
+
+            ObjectField brickPrefab = new ObjectField("砖块预制体");
+            brickPrefab.value = currentBrick.brick;
+            rootVisualElement.Add(brickPrefab);
+
+            ColorField brickColor = new ColorField("砖块颜色");
+            brickColor.value = currentBrick.data.brickColor;
+            rootVisualElement.Add(brickColor);
         }
     }
 }
