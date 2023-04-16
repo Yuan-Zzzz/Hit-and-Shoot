@@ -12,6 +12,8 @@ public class BallController : MonoBehaviour
     private Collider2D ballCollider;
     [SerializeField]
     private BallData_SO data;
+    [HideInInspector]
+    public int count;
     [SerializeField]
     private Text CountText;
     private bool canShoot = true;
@@ -38,8 +40,8 @@ public class BallController : MonoBehaviour
 
     private void OnShootCountInit(int _shootCount)
     {
-        data.count = _shootCount;
-        CountText.text = data.count.ToString();
+        count = _shootCount;
+        CountText.text = count.ToString();
 
     }
 
@@ -114,7 +116,7 @@ public class BallController : MonoBehaviour
         get
         {
 
-            if (data.count <= 0 || transform.position.y < -5.6f)
+            if (count <= 0 || transform.position.y < -5.6f)
             {
                 return true;
             }
@@ -196,8 +198,8 @@ public class BallController : MonoBehaviour
 
         ballRB.AddForce(dir * data.backlashForce, ForceMode2D.Force);
 
-        data.count--;
-        CountText.text = data.count.ToString();
+        count--;
+        CountText.text = count.ToString();
 
     }
 }

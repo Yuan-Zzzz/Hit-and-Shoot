@@ -26,9 +26,10 @@ public class BrickController : MonoBehaviour
       if(other.gameObject == this.gameObject)
         {
             Hitted();
-            //AudioManager.Instance.Play(AudioName.GamePass);
         }
     }
+
+
     public virtual void Hitted()
     {
         data.count--;
