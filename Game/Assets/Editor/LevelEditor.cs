@@ -12,12 +12,14 @@ public class LevelEditor : EditorWindow
     private VisualElement rightPane;
     private ListView leftPane;
 
-    private const float brickSize = 50;
-    private const float levelHeight = 10;
-    private const float levelWidth = 17;
+    private const int brickSize = 50;
+    private const int levelHeight = 10;
+    private const int levelWidth = 17;
 
     public static LevelData_SO selectedLevel;
     public static SingleBrickData currentBrick;
+
+  // Button[,] holderButton = new Button[levelWidth, levelHeight];
     [MenuItem("Tools/LevelEditor")]
     public static void ShowMyEditor()
     {
@@ -64,27 +66,37 @@ public class LevelEditor : EditorWindow
         if (selectedLevel == null) return;
 
 
-        //»æÖÆÈÝÆ÷
+        //»æÖÆÈÝÆ÷°´Å¥
         for (int i = 0; i < levelWidth; i++)
         {
             for (int j = 0; j < levelHeight; j++)
             {
-                Button holderButton = new Button();
-
+               
+               Button holderButton = new Button();
                 holderButton.style.position = Position.Absolute;
                 holderButton.text = "Holder";
                 holderButton.style.height = brickSize;
                 holderButton.style.width = brickSize;
                 holderButton.style.left = i * brickSize;
                 holderButton.style.top = j * brickSize;
-                rightPane.Add(holderButton);
 
+                //holderButton[i, j].clicked += () =>
+                //{
+                //    var window = new BrickEditorWindow(i,j);
+                //      window.ShowModal();
+                //};
+                holderButton.userData = new Vector2(i,j);
 
                 holderButton.clicked += () =>
                 {
-                   // currentBrick = brick;
-                    Debug.Log(new Vector2(i,j));
+                   
+                    var window = new BrickEditorWindow(holderButton.userData);
+                       window.ShowModal();
                 };
+
+                holderButton.tooltip = i + "," + j;
+
+                rightPane.Add(holderButton);
                 //»æÖÆ×©¿é
                 foreach (var brick in selectedLevel.bricks)
                 {
@@ -99,7 +111,7 @@ public class LevelEditor : EditorWindow
                         holderButton.Add(spriteImage);
                     }
 
-                   
+
                 }
             }
         }
@@ -107,44 +119,47 @@ public class LevelEditor : EditorWindow
 
 
 
-private void OnHolderClicked()
-{
-    var window = new BrickEditorWindow();
-    window.ShowModal();
-}
+    //private void OnHolderClicked()
+    //{
+    //    var window = new BrickEditorWindow();
+    //    window.ShowModal();
+    //}
 
-public class BrickEditorWindow : EditorWindow
-{
-
-
-    private void OnEnable()
+    public class BrickEditorWindow : EditorWindow
     {
+        Vector2 pos;
+        public BrickEditorWindow(object _pos)
+        {
+            pos = (Vector2)_pos;
+        }
+        private void OnEnable()
+        {
+            //Color test = selectedLevel.
 
+            //var gameObjectBox = new Box();
+            //gameObjectBox.Add(new Label("×©¿éÔ¤ÖÆÌå"));
+            //gameObjectBox.Add(new ObjectField());
+            //rootVisualElement.Add(gameObjectBox);
+            //var colorBox = new Box();
+            //colorBox.Add(new Label("×©¿éÑÕÉ«"));
+            //colorBox.Add(new ColorField());
+            //rootVisualElement.Add(colorBox);
 
-        rootVisualElement.Add(new Label("±à¼­×©¿é"));
+            //var countBox = new Box();
+            //countBox.Add(new Label("ÊÜ»÷´ÎÊý"));
+            //countBox.Add(new IntegerField());
+            //rootVisualElement.Add(countBox);
 
-        //Color test = selectedLevel.
+            //var riftBox = new Box();
+            //riftBox.Add(new Label("·ÖÁÑÊý"));
+            //riftBox.Add(new IntegerField());
+            //rootVisualElement.Add(riftBox);
+        }
+        private void CreateGUI()
+        {
+            rootVisualElement.Add(new Label("±à¼­×©¿é"));
+            rootVisualElement.Add(new Label(pos.x+" "+pos.y));
+        }
 
-        //var gameObjectBox = new Box();
-        //gameObjectBox.Add(new Label("×©¿éÔ¤ÖÆÌå"));
-        //gameObjectBox.Add(new ObjectField());
-        //rootVisualElement.Add(gameObjectBox);
-        //var colorBox = new Box();
-        //colorBox.Add(new Label("×©¿éÑÕÉ«"));
-        //colorBox.Add(new ColorField());
-        //rootVisualElement.Add(colorBox);
-
-        //var countBox = new Box();
-        //countBox.Add(new Label("ÊÜ»÷´ÎÊý"));
-        //countBox.Add(new IntegerField());
-        //rootVisualElement.Add(countBox);
-
-        //var riftBox = new Box();
-        //riftBox.Add(new Label("·ÖÁÑÊý"));
-        //riftBox.Add(new IntegerField());
-        //rootVisualElement.Add(riftBox);
     }
-
-
-}
 }
