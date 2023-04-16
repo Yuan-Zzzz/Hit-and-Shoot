@@ -24,7 +24,8 @@ public class ProjectileController : MonoBehaviour
     {
         if(CheckCollision(out Collider2D _ohter)&&!isHit)
         {
-           
+
+            EventManager.Send<Collider2D>(EventName.ProjectileHit, _ohter);
             Camera.main.transform.DOShakePosition(0.1f, 0.2f);
             if (!_ohter.gameObject.CompareTag(Tags.Ball))
             {
@@ -36,7 +37,7 @@ public class ProjectileController : MonoBehaviour
                 StartCoroutine(ReturnPool());
                 isHit = true;
             }
-            _ohter.gameObject.GetComponent<BrickController>()?.Hitted();
+          //_ohter.gameObject.GetComponent<BrickController>()?.Hitted();
         }
     }
     private bool CheckCollision(out Collider2D _other)

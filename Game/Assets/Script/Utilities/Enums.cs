@@ -2,6 +2,7 @@ public enum EventName
 {
     ExitScene,EnterScene,
     BallHit,BallDead,PrepareDistoryBall,
+    ProjectileHit,
     LoadLevel,
     CanShoot,ShootCountInit,
     EnterBulletTime,ExitBulletTime,

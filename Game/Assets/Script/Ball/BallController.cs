@@ -24,7 +24,7 @@ public class BallController : MonoBehaviour
     {
         ballRB = GetComponent<Rigidbody2D>();
         ballCollider = GetComponent<Collider2D>();
-        Initialize();
+       
     }
 
     private void OnEnable()
@@ -33,7 +33,7 @@ public class BallController : MonoBehaviour
 
         EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
         EventManager.Register<int>(EventName.ShootCountInit, OnShootCountInit);
-
+        Initialize();
 
 
     }
@@ -41,7 +41,7 @@ public class BallController : MonoBehaviour
     private void OnShootCountInit(int _shootCount)
     {
         count = _shootCount;
-        CountText.text = count.ToString();
+        UpdateCountText();
 
     }
 
@@ -184,8 +184,12 @@ public class BallController : MonoBehaviour
     {
         ballRB.gravityScale = data.gravity;
         ballCollider.sharedMaterial.bounciness = data.bounciness;
+        
     }
-
+   public void UpdateCountText()
+    {
+        CountText.text = count.ToString();
+    }
     private void Shoot()
     {
         AudioManager.Instance.Play(AudioName.BulletHit_1);
@@ -199,7 +203,7 @@ public class BallController : MonoBehaviour
         ballRB.AddForce(dir * data.backlashForce, ForceMode2D.Force);
 
         count--;
-        CountText.text = count.ToString();
+        UpdateCountText();
 
     }
 }

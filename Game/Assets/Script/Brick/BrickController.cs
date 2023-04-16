@@ -8,6 +8,7 @@ public class BrickController : MonoBehaviour
 {
    
     public BrickData data = new BrickData();
+    protected GameObject hitObject;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class BrickController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
+        EventManager.Register<Collider2D>(EventName.ProjectileHit, OnProjectileHit);
    
     }
 
@@ -25,10 +27,18 @@ public class BrickController : MonoBehaviour
     {
       if(other.gameObject == this.gameObject)
         {
+            hitObject = other.gameObject;
             Hitted();
         }
     }
-
+    private void OnProjectileHit(Collider2D other)
+    {
+        if (other.gameObject == this.gameObject)
+        {
+            hitObject = other.gameObject;
+            Hitted();
+        }
+    }
 
     public virtual void Hitted()
     {
@@ -38,10 +48,14 @@ public class BrickController : MonoBehaviour
         if (data.count == 0)
             StartCoroutine(Destory());
     }
+   
     private void OnDisable()
     {
         EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
+        EventManager.Remove<Collider2D>(EventName.ProjectileHit, OnProjectileHit);
     }
+
+
 
     IEnumerator Destory()
     {

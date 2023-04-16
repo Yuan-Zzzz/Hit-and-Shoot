@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RiftBrickController : BrickController
 {
-    private GameObject hitObject;
+   
     public override void Hitted()
     {
         base.Hitted();
@@ -17,16 +17,13 @@ public class RiftBrickController : BrickController
                     var newBall = Instantiate(Resources.Load<GameObject>("Prefabs/Ball"), transform.position, Quaternion.identity);
                     newBall.GetComponent<BallController>().count = GameObject.FindGameObjectWithTag(Tags.Ball).GetComponent<BallController>().count;
                     newBall.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+                    newBall.GetComponent<BallController>().UpdateCountText();
                 }
             }
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        hitObject = other.gameObject;
-        Debug.Log(other.gameObject.name);
-    }
+   
 
 
 }
