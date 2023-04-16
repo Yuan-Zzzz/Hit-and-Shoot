@@ -19,7 +19,7 @@ public class LevelEditor : EditorWindow
     public static LevelData_SO selectedLevel;
     public static SingleBrickData currentBrick;
 
-  // Button[,] holderButton = new Button[levelWidth, levelHeight];
+    // Button[,] holderButton = new Button[levelWidth, levelHeight];
     [MenuItem("Tools/LevelEditor")]
     public static void ShowMyEditor()
     {
@@ -39,7 +39,7 @@ public class LevelEditor : EditorWindow
         }
         //创建窗口
         var splitView1 = new TwoPaneSplitView(0, 150, TwoPaneSplitViewOrientation.Horizontal);
-        //  var splitView2 = new TwoPaneSplitView(0, 150, TwoPaneSplitViewOrientation.Vertical);
+
         rootVisualElement.Add(splitView1);
 
         leftPane = new ListView();
@@ -48,8 +48,6 @@ public class LevelEditor : EditorWindow
         rightPane = new VisualElement();
         splitView1.Add(rightPane);
 
-
-        // Initialize the list view with all sprites' names
         leftPane.makeItem = () => new Label();
         leftPane.bindItem = (item, index) => { (item as Label).text = allObjects[index].name; };
         leftPane.itemsSource = allObjects;
@@ -61,18 +59,16 @@ public class LevelEditor : EditorWindow
         //清除右侧内容
         rightPane.Clear();
 
-        // Get the selected sprite
         selectedLevel = _selectedLevels.First() as LevelData_SO;
         if (selectedLevel == null) return;
-
 
         //绘制容器按钮
         for (int i = 0; i < levelWidth; i++)
         {
             for (int j = 0; j < levelHeight; j++)
             {
-               
-               Button holderButton = new Button();
+
+                Button holderButton = new Button();
                 holderButton.style.position = Position.Absolute;
                 holderButton.text = "Holder";
                 holderButton.style.height = brickSize;
@@ -80,28 +76,13 @@ public class LevelEditor : EditorWindow
                 holderButton.style.left = i * brickSize;
                 holderButton.style.top = j * brickSize;
 
-                //holderButton[i, j].clicked += () =>
-                //{
-                //    var window = new BrickEditorWindow(i,j);
-                //      window.ShowModal();
-                //};
-                holderButton.userData = new Vector2(i,j);
-
-                holderButton.clicked += () =>
-                {
-                   
-                    var window = new BrickEditorWindow(holderButton.userData);
-                       window.ShowModal();
-                };
-
-                holderButton.tooltip = i + "," + j;
-
+                //设置按钮坐标对应实际砖块坐标
+                holderButton.userData = new Vector2(i - (int)levelWidth / 2, -j + (int)levelHeight / 2);
+                //holderButton.tooltip = i + "," + j;
                 rightPane.Add(holderButton);
                 //绘制砖块
                 foreach (var brick in selectedLevel.bricks)
                 {
-
-
                     if (brick.pos.x + (int)levelWidth / 2 == i && brick.pos.y - (int)levelHeight / 2 == -j)
                     {
                         var spriteImage = new Image();
@@ -109,16 +90,18 @@ public class LevelEditor : EditorWindow
                         spriteImage.sprite = brick.brick.gameObject.GetComponent<SpriteRenderer>().sprite;
                         spriteImage.tintColor = new Color(brick.data.brickColor.r, brick.data.brickColor.g, brick.data.brickColor.b, 1f);
                         holderButton.Add(spriteImage);
+
+
+                        holderButton.clicked += () =>
+                        {
+                            var window = new BrickEditorWindow(holderButton.userData);
+                            window.ShowModal();
+                        };
                     }
-
-
                 }
             }
         }
     }
-
-
-
     //private void OnHolderClicked()
     //{
     //    var window = new BrickEditorWindow();
@@ -157,9 +140,8 @@ public class LevelEditor : EditorWindow
         }
         private void CreateGUI()
         {
-            rootVisualElement.Add(new Label("编辑砖块"));
-            rootVisualElement.Add(new Label(pos.x+" "+pos.y));
+            rootVisualElement.Add(new Label("所选砖块位置"));
+            rootVisualElement.Add(new Label(pos.x + " " + pos.y));
         }
-
     }
 }
