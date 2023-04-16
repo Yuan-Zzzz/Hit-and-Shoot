@@ -9,8 +9,8 @@ using UnityEngine.UIElements;
 public class LevelEditor : EditorWindow
 {
 
-    private VisualElement rightPane;
-    private ListView leftPane;
+    private static VisualElement rightPane;
+    private static ListView leftPane;
 
     private const int brickSize = 50;
     private const int levelHeight = 10;
@@ -53,15 +53,10 @@ public class LevelEditor : EditorWindow
         leftPane.itemsSource = allObjects;
         leftPane.onSelectionChange += OnLevelSelectionChange;
     }
-    private void OnLevelSelectionChange(IEnumerable<object> _selectedLevels)
+    public static void UpdateRightPane()
     {
-
         //清除右侧内容
         rightPane.Clear();
-
-        selectedLevel = _selectedLevels.First() as LevelData_SO;
-        if (selectedLevel == null) return;
-
         //绘制容器按钮
         for (int i = 0; i < levelWidth; i++)
         {
@@ -70,86 +65,131 @@ public class LevelEditor : EditorWindow
 
                 Button holderButton = new Button();
                 holderButton.style.position = Position.Absolute;
-                holderButton.text = "Holder";
+                holderButton.text = "Add";
                 holderButton.style.height = brickSize;
                 holderButton.style.width = brickSize;
                 holderButton.style.left = i * brickSize;
                 holderButton.style.top = j * brickSize;
 
-                //holderButton.tooltip = i + "," + j;
+              
                 rightPane.Add(holderButton);
+
                 //绘制砖块
                 foreach (var brick in selectedLevel.bricks)
                 {
+                    //当前位置有砖块
                     if (brick.pos.x + (int)levelWidth / 2 == i && brick.pos.y - (int)levelHeight / 2 == -j)
                     {
+                       
                         var spriteImage = new Image();
                         spriteImage.scaleMode = ScaleMode.ScaleToFit;
                         spriteImage.sprite = brick.brick.gameObject.GetComponent<SpriteRenderer>().sprite;
                         spriteImage.tintColor = new Color(brick.data.brickColor.r, brick.data.brickColor.g, brick.data.brickColor.b, 1f);
                         holderButton.Add(spriteImage);
 
-
                         holderButton.clicked += () =>
                         {
-                            
                             holderButton.userData = brick;
                             var window = new BrickEditorWindow(holderButton.userData);
                             window.ShowModal();
                         };
                     }
                 }
+
+                //创建新Brick
+                if (holderButton.childCount == 0)
+                {
+                    Vector2 newPos = new Vector2(i- (int)levelWidth / 2, -j+ (int)levelHeight / 2);
+                    holderButton.clicked += () =>
+                    {
+                        //初始化新Brick
+                        SingleBrickData newBrick = new SingleBrickData();
+                        newBrick.brick = Resources.Load<GameObject>("Prefabs/Brick");
+                        newBrick.pos = newPos;
+
+                        newBrick.data = new BrickData();
+                        newBrick.data.count = 1;
+                        newBrick.data.riftCount = 0;
+                        newBrick.data.brickColor = Color.white;
+
+                        selectedLevel.bricks.Add(newBrick);
+                        //弹出窗口
+                        holderButton.userData = newBrick;
+                        var window = new BrickEditorWindow(holderButton.userData);
+                        window.ShowModal();
+                    };
+                }
             }
         }
     }
-    //private void OnHolderClicked()
-    //{
-    //    var window = new BrickEditorWindow();
-    //    window.ShowModal();
-    //}
+    private void OnLevelSelectionChange(IEnumerable<object> _selectedLevels)
+    {
+        selectedLevel = _selectedLevels.First() as LevelData_SO;
+        if (selectedLevel == null) return;
 
+        UpdateRightPane();
+       
+    }
+  
     public class BrickEditorWindow : EditorWindow
     {
         SingleBrickData currentBrick;
+    
+
+        ObjectField brickPrefab = new ObjectField("砖块预制体");
+        ColorField brickColor = new ColorField("砖块颜色");
+        IntegerField brickCount = new IntegerField("弹球次数");
+        IntegerField brickRiftCount = new IntegerField("分裂数");
+        Button deleteButton = new Button();
         public BrickEditorWindow(object _currentBrickData)
         {
             currentBrick = (SingleBrickData)_currentBrickData;
         }
-        private void OnEnable()
-        {
-            //Color test = selectedLevel.
-
-            //var gameObjectBox = new Box();
-            //gameObjectBox.Add(new Label("砖块预制体"));
-            //gameObjectBox.Add(new ObjectField());
-            //rootVisualElement.Add(gameObjectBox);
-            //var colorBox = new Box();
-            //colorBox.Add(new Label("砖块颜色"));
-            //colorBox.Add(new ColorField());
-            //rootVisualElement.Add(colorBox);
-
-            //var countBox = new Box();
-            //countBox.Add(new Label("受击次数"));
-            //countBox.Add(new IntegerField());
-            //rootVisualElement.Add(countBox);
-
-            //var riftBox = new Box();
-            //riftBox.Add(new Label("分裂数"));
-            //riftBox.Add(new IntegerField());
-            //rootVisualElement.Add(riftBox);
-        }
+    
         private void CreateGUI()
         {
+            
             rootVisualElement.Add(new Label("所选砖块位置"));
             rootVisualElement.Add(new Label(currentBrick.pos.x + " " + currentBrick.pos.y));
 
-            ObjectField brickPrefab = new ObjectField("砖块预制体");
+            //读取数据
+          
             brickPrefab.value = currentBrick.brick;
             rootVisualElement.Add(brickPrefab);
 
-            ColorField brickColor = new ColorField("砖块颜色");
+            
             brickColor.value = currentBrick.data.brickColor;
             rootVisualElement.Add(brickColor);
+
+            brickCount.value = currentBrick.data.count;
+            rootVisualElement.Add(brickCount);
+
+            brickRiftCount.value = currentBrick.data.riftCount;
+            rootVisualElement.Add(brickRiftCount);
+
+
+            deleteButton.text = "删除当前砖块";
+            deleteButton.clicked += () => {
+                foreach (var brick in selectedLevel.bricks)
+                {
+                    if (brick.pos == currentBrick.pos) {
+                        selectedLevel.bricks.Remove(brick);
+                        LevelEditor.UpdateRightPane();
+                        //关闭窗口
+                        Close();
+                        break;
+                } }
+            };
+            rootVisualElement.Add(deleteButton);
+        }
+
+        private void OnGUI()
+        {
+            currentBrick.data.brickColor = brickColor.value;
+            currentBrick.data.count = brickCount.value;
+            currentBrick.data.riftCount = brickRiftCount.value;
+
+            LevelEditor.UpdateRightPane();
         }
     }
 }

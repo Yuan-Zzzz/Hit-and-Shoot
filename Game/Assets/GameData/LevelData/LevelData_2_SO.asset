@@ -27,13 +27,13 @@ MonoBehaviour:
     data:
       count: 2
       maxCount: 10
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
+      brickColor: {r: 1, g: 1, b: 1, a: 0}
       riftCount: 0
     pos: {x: -6, y: 3}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 2
       maxCount: 10
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
+      brickColor: {r: 0.5794795, g: 1, b: 0.30817604, a: 0}
       riftCount: 0
     pos: {x: 6, y: 3}
