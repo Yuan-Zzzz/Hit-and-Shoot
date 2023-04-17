@@ -113,7 +113,7 @@ public class BallController : MonoBehaviour
         get
         {
 
-            if (count <= 0 || transform.position.y < -5.6f)
+            if (count <0 || transform.position.y < -5.6f)
             {
                 return true;
             }
