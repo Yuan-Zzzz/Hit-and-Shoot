@@ -101,6 +101,7 @@ public class BallController : MonoBehaviour
         {
             var newFlash = PoolManager.Instance.GetFromPool(PoolName.FlashPool);
             newFlash.transform.position = transform.position;
+            newFlash.GetComponent<FlashController>().followSpriteRenderer = this.GetComponent<SpriteRenderer>();
             yield return spawnFlashDeltaTime;
         }
 

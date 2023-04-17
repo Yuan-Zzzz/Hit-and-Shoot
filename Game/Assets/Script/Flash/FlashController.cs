@@ -7,6 +7,7 @@ using UnityEngine;
 public class FlashController : MonoBehaviour
 {
     SpriteRenderer flashSpriteRenderer;
+    public SpriteRenderer followSpriteRenderer;
     private void Awake()
     {
         flashSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -15,8 +16,8 @@ public class FlashController : MonoBehaviour
     {
 
         //EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
+        if(followSpriteRenderer != null)flashSpriteRenderer.color = followSpriteRenderer.color;
 
-        flashSpriteRenderer.color = GameObject.FindGameObjectWithTag(Tags.Ball).GetComponent<SpriteRenderer>().color;
         flashSpriteRenderer.DOColor(new Color(flashSpriteRenderer.color.r, flashSpriteRenderer.color.g, flashSpriteRenderer.color.b, 0), 0.5f);
         transform.localScale = new Vector2(1, 1);
         transform.DOScale(new Vector2(0f, 0f), 0.5f);
