@@ -29,13 +29,9 @@ public class BallController : MonoBehaviour
 
     private void OnEnable()
     {
-
-
         EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
         EventManager.Register<int>(EventName.ShootCountInit, OnShootCountInit);
         Initialize();
-
-
     }
 
     private void OnShootCountInit(int _shootCount)
@@ -135,25 +131,26 @@ public class BallController : MonoBehaviour
         EventManager.Send<Collision2D>(EventName.BallHit, other);
         AudioManager.Instance.Play(AudioName.Hit_2);
         //改变颜色
-        if (other.gameObject.GetComponent<SpriteRenderer>() != null && !other.gameObject.CompareTag(Tags.Platform))
+        var otherSprireRenderer = other.gameObject.GetComponent<SpriteRenderer>();
+        if (otherSprireRenderer != null && !other.gameObject.CompareTag(Tags.Platform))
         {
             GetComponent<SpriteRenderer>().DOBlendableColor(
                 new Color(
-                other.gameObject.GetComponent<SpriteRenderer>().color.r,
-                other.gameObject.GetComponent<SpriteRenderer>().color.g,
-                other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
+                otherSprireRenderer.color.r,
+               otherSprireRenderer.color.g,
+                otherSprireRenderer.color.b, 1), 0.5f);
 
             arrowSpriteRenderer.DOBlendableColor(
                 new Color(
-                other.gameObject.GetComponent<SpriteRenderer>().color.r,
-                other.gameObject.GetComponent<SpriteRenderer>().color.g,
-                other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
+                otherSprireRenderer.color.r,
+               otherSprireRenderer.color.g,
+               otherSprireRenderer.color.b, 1), 0.5f);
 
             dirCircleSpriteRenderer.DOBlendableColor(
                 new Color(
-                other.gameObject.GetComponent<SpriteRenderer>().color.r,
-                other.gameObject.GetComponent<SpriteRenderer>().color.g,
-                other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
+               otherSprireRenderer.color.r,
+               otherSprireRenderer.color.g,
+               otherSprireRenderer.color.b, 1), 0.5f);
 
         }
         //碰到平台反弹

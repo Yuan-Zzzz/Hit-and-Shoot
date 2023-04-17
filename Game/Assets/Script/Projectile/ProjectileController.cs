@@ -26,7 +26,6 @@ public class ProjectileController : MonoBehaviour
         {
 
             EventManager.Send<Collider2D>(EventName.ProjectileHit, _ohter);
-            Camera.main.transform.DOShakePosition(0.1f, 0.2f);
             if (!_ohter.gameObject.CompareTag(Tags.Ball))
             {
                 transform.DOShakePosition(0.1f, 0.2f);
