@@ -167,17 +167,19 @@ public class BallController : MonoBehaviour
         JellyEffect();
 
     }
-
+   private Tweener scaleTweener;
     private void JellyEffect()
     {
+        
+        if(scaleTweener!=null)scaleTweener.Kill();
         transform.localScale = Vector3.one;
-        transform.DOPunchScale(new Vector2(0.7f, 0.7f), 0.2f);
+       scaleTweener = transform.DOPunchScale(new Vector2(0.7f, 0.7f), 0.2f);
     }
   
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        transform.DOScale(new Vector3(1, 1, 1), 0.2f);
-    }
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    transform.DOScale(new Vector3(1, 1, 1), 0.2f);
+    //}
     private float HitFactor(Vector2 ballPos, Vector2 platformPos, float platformWidth)
     {
         return (ballPos.x - platformPos.x) / platformWidth;
