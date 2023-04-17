@@ -171,6 +171,7 @@ public class BallController : MonoBehaviour
         transform.localScale = Vector3.one;
         transform.DOPunchScale(new Vector2(0.7f, 0.7f), 0.2f);
     }
+  
     private void OnCollisionExit2D(Collision2D collision)
     {
         transform.DOScale(new Vector3(1, 1, 1), 0.2f);
@@ -204,7 +205,7 @@ public class BallController : MonoBehaviour
         ballRB.velocity = Vector2.zero;
 
         ballRB.AddForce(dir * data.backlashForce, ForceMode2D.Force);
-
+        JellyEffect();
         count--;
         UpdateCountText();
 
