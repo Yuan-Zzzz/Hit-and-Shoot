@@ -80,14 +80,15 @@ public class BallController : MonoBehaviour
     bool isCoroutineRunning = false;
     IEnumerator DestoryBall()
     {
-         EventManager.Send<Vector2>(EventName.PrepareDistoryBall, (Vector2)transform.position);
+        yield return null;
+         //EventManager.Send<Vector2>(EventName.PrepareDistoryBall, (Vector2)transform.position);
         isCoroutineRunning = true;
-        Tweener t1 = transform.DOScale(new Vector2(0f, 0f), 0.15f);
+        //Tweener t1 = transform.DOScale(new Vector2(0f, 0f), 0.15f);
        
-        TimeManager.LaunchBulletTime(0.1f);
+        //TimeManager.LaunchBulletTime(0.1f);
 
-        yield return t1.WaitForCompletion();
-        TimeManager.StopBulletTime();
+        //yield return t1.WaitForCompletion();
+        //TimeManager.StopBulletTime();
         var newPieces = PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
         newPieces.transform.position = transform.position;
         Destroy(this.gameObject);
