@@ -16,21 +16,21 @@ public class PlatformController : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
+        EventManager.Register<Collision2D,GameObject>(EventName.BallHit, OnBallHit);
     }
 
-    private void OnBallHit(Collision2D other)
+    private void OnBallHit(Collision2D other,GameObject ball)
     {
         if(other.gameObject == this.gameObject)
         {
             transform.DOPunchScale(new Vector2(0.2f, 0.2f), 0.2f);
-            GetComponent<SpriteRenderer>().DOBlendableColor(GameObject.FindGameObjectWithTag(Tags.Ball).GetComponent<SpriteRenderer>().color,1f);
+            GetComponent<SpriteRenderer>().DOBlendableColor(ball.GetComponent<SpriteRenderer>().color,1f);
         }
     }
 
     private void OnDisable()
     {
-        EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
+        EventManager.Remove<Collision2D,GameObject>(EventName.BallHit, OnBallHit);
     }
     private void Start()
     {

@@ -6,29 +6,39 @@ using System;
 
 public class BrickController : MonoBehaviour
 {
-   
+
     public BrickData data = new BrickData();
     protected GameObject hitObject;
 
     private void Start()
     {
         data.UpdateBrick(gameObject);
-      
+
     }
     private void OnEnable()
     {
-        EventManager.Register<Collision2D>(EventName.BallHit, OnBallHit);
+        EventManager.Register<Collision2D, GameObject>(EventName.BallHit, OnBallHit);
         EventManager.Register<Collider2D>(EventName.ProjectileHit, OnProjectileHit);
-   
+
     }
 
 
-    public virtual void OnBallHit(Collision2D other)
+    public virtual void OnBallHit(Collision2D other, GameObject ball)
     {
-      if(other.gameObject == this.gameObject)
+        if (other.gameObject == this.gameObject)
         {
             hitObject = other.gameObject;
             Hitted();
+            //改变球的颜色
+            if (ball.GetComponent<SpriteRenderer>() != null)
+            {
+                ball.GetComponent<SpriteRenderer>().DOBlendableColor(
+                new Color(
+                GetComponent<SpriteRenderer>().color.r,
+               GetComponent<SpriteRenderer>().color.g,
+                GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
+            }
+          
         }
     }
     private void OnProjectileHit(Collider2D other)
@@ -48,10 +58,10 @@ public class BrickController : MonoBehaviour
         if (data.count == 0)
             StartCoroutine(Destory());
     }
-   
+
     private void OnDisable()
     {
-        EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
+        EventManager.Remove<Collision2D, GameObject>(EventName.BallHit, OnBallHit);
         EventManager.Remove<Collider2D>(EventName.ProjectileHit, OnProjectileHit);
     }
 
@@ -60,8 +70,8 @@ public class BrickController : MonoBehaviour
     IEnumerator Destory()
     {
         GetComponent<Collider2D>().enabled = false;
-        Tweener punchScale = transform.DOScale(new Vector2(0f,0f),0.15f);
-        yield return punchScale.WaitForCompletion();  
+        Tweener punchScale = transform.DOScale(new Vector2(0f, 0f), 0.15f);
+        yield return punchScale.WaitForCompletion();
         Destroy(gameObject);
     }
 }

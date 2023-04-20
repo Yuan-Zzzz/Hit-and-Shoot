@@ -49,5 +49,8 @@ public class Arrow : MonoBehaviour
         Vector2 direction = (mousePos - (Vector2)transform.position);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+
+        GetComponent<SpriteRenderer>().color = transform.parent.GetComponent<SpriteRenderer>().color;
     }
 }

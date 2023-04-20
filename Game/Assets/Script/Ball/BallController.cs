@@ -130,31 +130,8 @@ public class BallController : MonoBehaviour
         var newPieces = PoolManager.Instance.GetFromPool(PoolName.PiecesPool);
         newPieces.transform.position = transform.position;
         newPieces.GetComponent<ParticleSystem>().startColor = GetComponent<SpriteRenderer>().color;
-        EventManager.Send<Collision2D>(EventName.BallHit, other);
+        EventManager.Send<Collision2D,GameObject>(EventName.BallHit, other,gameObject);
         AudioManager.Instance.Play(AudioName.Hit_2);
-        //改变颜色
-        var otherSprireRenderer = other.gameObject.GetComponent<SpriteRenderer>();
-        if (otherSprireRenderer != null && !other.gameObject.CompareTag(Tags.Platform))
-        {
-            GetComponent<SpriteRenderer>().DOBlendableColor(
-                new Color(
-                otherSprireRenderer.color.r,
-               otherSprireRenderer.color.g,
-                otherSprireRenderer.color.b, 1), 0.5f);
-
-            arrowSpriteRenderer.DOBlendableColor(
-                new Color(
-                otherSprireRenderer.color.r,
-               otherSprireRenderer.color.g,
-               otherSprireRenderer.color.b, 1), 0.5f);
-
-            dirCircleSpriteRenderer.DOBlendableColor(
-                new Color(
-               otherSprireRenderer.color.r,
-               otherSprireRenderer.color.g,
-               otherSprireRenderer.color.b, 1), 0.5f);
-
-        }
         //碰到平台反弹
         if (other.gameObject.CompareTag(Tags.Platform))
         {

@@ -24,20 +24,6 @@ public class DirCircle : MonoBehaviour
         EventManager.Remove<bool>(EventName.CanShoot, OnCanShoot);
         //EventManager.Remove<Collision2D>(EventName.BallHit, OnBallHit);
     }
-
-    //private void OnBallHit(Collision2D other)
-    //{
-    //    //¸Ä±äÑÕÉ«
-    //    if (other.gameObject.GetComponent<SpriteRenderer>() != null&& !other.gameObject.CompareTag(Tags.Platform))
-    //    {
-    //        GetComponent<SpriteRenderer>().DOBlendableColor(
-    //            new Color(
-    //            other.gameObject.GetComponent<SpriteRenderer>().color.r,
-    //            other.gameObject.GetComponent<SpriteRenderer>().color.g,
-    //            other.gameObject.GetComponent<SpriteRenderer>().color.b, 1), 0.5f);
-    //    }
-    //}
-
     void Update()
     {
         if (InputManager.ShootPress)
@@ -45,10 +31,14 @@ public class DirCircle : MonoBehaviour
             transform.DOScale(new Vector2(1.2f, 1.2f), 0.05f);
         }
         if(InputManager.ShootRelease) transform.DOScale(new Vector2(1f, 1f), 0.1f);
+
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(InputManager.MousePos);
         Vector2 direction = mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        GetComponent<SpriteRenderer>().color = transform.parent.GetComponent<SpriteRenderer>().color;
+
     }
 
 }
