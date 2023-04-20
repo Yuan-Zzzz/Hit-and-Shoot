@@ -27,6 +27,26 @@ public class LevelEditor : EditorWindow
         wnd.titleContent = new GUIContent("关卡编辑器");
 
     }
+    private void OnGUI()
+    {
+        //var allObjectGuids = AssetDatabase.FindAssets("t:LevelData_SO");
+        //foreach (var objectGuid in allObjectGuids)
+        //{
+        //    AssetDatabase.SaveAssetIfDirty();
+
+        //}
+        ////保存数据
+        //AssetDatabase.SaveAssets();
+
+        ////加载关卡数据
+        //var allObjectGuids = AssetDatabase.FindAssets("t:LevelData_SO");
+        //foreach (var guid in allObjectGuids)
+        //{
+        //    AssetDatabase.LoadAssetAtPath<LevelData_SO>(AssetDatabase.GUIDToAssetPath(guid));
+        //    AssetDatabase.SaveAssets();
+        //}
+
+    }
     public void CreateGUI()
     {
 
@@ -54,6 +74,7 @@ public class LevelEditor : EditorWindow
     }
     public static void UpdateRightPane()
     {
+
         //清除右侧内容
         rightPane.Clear();
         //绘制添加按钮
@@ -126,12 +147,15 @@ public class LevelEditor : EditorWindow
         //baseInfoBox.style.bottom = 10;
         //baseInfoBox.Add(new Label("关卡基本信息"));
         //rightPane.Add(baseInfoBox);
+
+      
     }
     private void OnLevelSelectionChange(IEnumerable<object> _selectedLevels)
     {
         selectedLevel = _selectedLevels.First() as LevelData_SO;
+        EditorUtility.SetDirty(selectedLevel);
         if (selectedLevel == null) return;
-
+       
         UpdateRightPane();
 
     }
