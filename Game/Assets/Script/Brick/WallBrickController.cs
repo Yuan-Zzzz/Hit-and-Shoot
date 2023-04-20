@@ -11,6 +11,7 @@ public class WallBrickController : BrickController
        if(other.gameObject == this.gameObject)
         {
             hitObject = ball;
+
             //¸Ä±äÇ½ÑÕÉ«
             GetComponent<SpriteRenderer>().DOBlendableColor(
              ball.GetComponent<SpriteRenderer>().color, 0.5f);
