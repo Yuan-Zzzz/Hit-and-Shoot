@@ -193,6 +193,7 @@ public class LevelEditor : EditorWindow
 
         private void OnGUI()
         {
+            currentBrick.brick = brickPrefab.value as GameObject;
             currentBrick.data.brickColor = brickColor.value;
             currentBrick.data.count = brickCount.value;
             currentBrick.data.riftCount = brickRiftCount.value;
