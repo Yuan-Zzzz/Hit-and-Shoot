@@ -14,7 +14,18 @@ public class WallBrickController : BrickController
 
             //改变墙颜色
             GetComponent<SpriteRenderer>().DOBlendableColor(
-             ball.GetComponent<SpriteRenderer>().color, 0.5f);
+             ball.GetComponent<SpriteRenderer>().color, 0.2f);
         }
     }
+
+    public override void OnProjectileHit(Collider2D other, GameObject projectile)
+    {
+        if (other.gameObject == this.gameObject)
+        {
+            hitObject = projectile;
+            //改变墙颜色
+            GetComponent<SpriteRenderer>().DOBlendableColor(
+             projectile.GetComponent<SpriteRenderer>().color, 0.2f);
+        }
+        }
 }

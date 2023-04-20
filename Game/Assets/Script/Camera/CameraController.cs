@@ -10,12 +10,12 @@ public class CameraController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Register<Collision2D,GameObject>(EventName.BallHit, OnBallHit);
-        EventManager.Register<Collider2D>(EventName.ProjectileHit, OnProjectileHit);
+        EventManager.Register<Collider2D,GameObject>(EventName.ProjectileHit, OnProjectileHit);
         EventManager.Register<Vector2>(EventName.BallDead, OnBallDead);
         EventManager.Register<Vector2>(EventName.PrepareDistoryBall, OnPrepareDistoryBall);
     }
 
-    private void OnProjectileHit(Collider2D other)
+    private void OnProjectileHit(Collider2D other,GameObject projectile)
     {
         ShakeCamera(0.15f, 1.7f);
     }
@@ -57,7 +57,7 @@ public class CameraController : MonoBehaviour
     private void OnDisable()
     {
         EventManager.Remove<Collision2D,GameObject>(EventName.BallHit, OnBallHit);
-        EventManager.Remove<Collider2D>(EventName.ProjectileHit, OnProjectileHit);
+        EventManager.Remove<Collider2D,GameObject>(EventName.ProjectileHit, OnProjectileHit);
         EventManager.Remove<Vector2>(EventName.BallDead, OnBallDead);
         EventManager.Remove<Vector2>(EventName.PrepareDistoryBall, OnPrepareDistoryBall);
     }

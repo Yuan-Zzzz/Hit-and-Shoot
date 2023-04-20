@@ -18,7 +18,7 @@ public class BrickController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Register<Collision2D, GameObject>(EventName.BallHit, OnBallHit);
-        EventManager.Register<Collider2D>(EventName.ProjectileHit, OnProjectileHit);
+        EventManager.Register<Collider2D,GameObject>(EventName.ProjectileHit, OnProjectileHit);
 
     }
 
@@ -41,11 +41,11 @@ public class BrickController : MonoBehaviour
           
         }
     }
-    private void OnProjectileHit(Collider2D other)
+    public virtual void OnProjectileHit(Collider2D other,GameObject projectile)
     {
         if (other.gameObject == this.gameObject)
         {
-            hitObject = other.gameObject;
+            hitObject = projectile;
             Hitted();
         }
     }
@@ -62,7 +62,7 @@ public class BrickController : MonoBehaviour
     private void OnDisable()
     {
         EventManager.Remove<Collision2D, GameObject>(EventName.BallHit, OnBallHit);
-        EventManager.Remove<Collider2D>(EventName.ProjectileHit, OnProjectileHit);
+        EventManager.Remove<Collider2D,GameObject>(EventName.ProjectileHit, OnProjectileHit);
     }
 
 
