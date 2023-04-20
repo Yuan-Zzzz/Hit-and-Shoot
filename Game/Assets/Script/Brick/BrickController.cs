@@ -27,7 +27,7 @@ public class BrickController : MonoBehaviour
     {
         if (other.gameObject == this.gameObject)
         {
-            hitObject = other.gameObject;
+            hitObject = ball;
             Hitted();
             //改变球的颜色
             if (ball.GetComponent<SpriteRenderer>() != null)

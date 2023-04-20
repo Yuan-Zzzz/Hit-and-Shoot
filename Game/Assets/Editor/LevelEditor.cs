@@ -13,8 +13,8 @@ public class LevelEditor : EditorWindow
     private static ListView leftPane;
 
     private const int brickSize = 40;
-    private const int levelHeight = 10;
-    private const int levelWidth = 17;
+    private const int levelHeight = 11;
+    private const int levelWidth = 19;
 
     public static LevelData_SO selectedLevel;
     public static SingleBrickData currentBrick;
@@ -90,7 +90,7 @@ public class LevelEditor : EditorWindow
                         {
                             holderButton.userData = brick;
                             var window = new BrickEditorWindow(holderButton.userData);
-                            window.ShowModal();
+                            window.ShowUtility();
                         };
                     }
                 }
@@ -160,6 +160,7 @@ public class LevelEditor : EditorWindow
             //¶ÁÈ¡Êý¾Ý
 
             brickPrefab.value = currentBrick.brick;
+            brickPrefab.objectType = typeof(GameObject);
             rootVisualElement.Add(brickPrefab);
 
 
