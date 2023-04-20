@@ -124,7 +124,7 @@ public class LevelEditor : EditorWindow
                     {
                         //³õÊ¼»¯ÐÂBrick
                         SingleBrickData newBrick = new SingleBrickData();
-                        newBrick.brick = Resources.Load<GameObject>("Prefabs/WallsBrick");
+                        newBrick.brick = Resources.Load<GameObject>("Prefabs/Brick");
                         newBrick.pos = newPos;
 
                         newBrick.data = new BrickData();
