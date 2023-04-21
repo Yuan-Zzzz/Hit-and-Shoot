@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3970682284638485373}
   - component: {fileID: 2968128926556835259}
   - component: {fileID: 6665533245210154789}
+  - component: {fileID: -9068293399537765505}
   m_Layer: 7
   m_Name: Projectile
   m_TagString: Projectile
@@ -97,3 +98,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01706227a324b644685e3746552299d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-9068293399537765505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3086159014976987245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000fd33097a
+  m_ShapePath:
+  - {x: -0.5, y: -0.25, z: 0}
+  - {x: -0.5, y: 0.25, z: 0}
+  - {x: 0.5, y: 0.25, z: 0}
+  - {x: 0.5, y: -0.25, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -1016956
+  m_LocalBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 0.25, z: 0}

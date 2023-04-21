@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
 
     private void RecoveryPosition()
     {
-        transform.DOMove(new Vector3(0, 0, transform.position.z), 0.2f);
+        transform.DOMove(new Vector3(0, 0, -10), 0.2f);
     }
 
     private void ShakeCamera(float _duration,float _strength)
