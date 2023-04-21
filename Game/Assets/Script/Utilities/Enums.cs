@@ -22,3 +22,7 @@ public enum GameState
     Pause,Gameplay
 
 }
+public enum ShootType
+{
+    Normal,Penetration
+}

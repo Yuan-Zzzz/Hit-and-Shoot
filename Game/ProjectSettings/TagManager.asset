@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - GameOverPanel
   - GamePassCanvas
+  - WallBrick
   layers:
   - Default
   - TransparentFX

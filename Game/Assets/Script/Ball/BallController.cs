@@ -20,6 +20,7 @@ public class BallController : MonoBehaviour
     private WaitForSeconds spawnFlashDeltaTime = new WaitForSeconds(0.05f);
     public SpriteRenderer arrowSpriteRenderer;
     public SpriteRenderer dirCircleSpriteRenderer;
+    private ShootType shootType = ShootType.Normal;
     private void Awake()
     {
         ballRB = GetComponent<Rigidbody2D>();
@@ -71,7 +72,19 @@ public class BallController : MonoBehaviour
             AudioManager.Instance.Stop(AudioName.BulletTime);
             AudioManager.Instance.Play(AudioName.BGM);
             TimeManager.StopBulletTime();
-            Shoot();
+
+            switch (shootType)
+            {
+                case ShootType.Normal:
+                    NormalShoot();
+                    break;
+                case ShootType.Penetration:
+                    PenetrationShoot();
+                    break;
+                default:
+                    break;
+            }
+          
 
         }
 
@@ -175,7 +188,7 @@ public class BallController : MonoBehaviour
     {
         CountText.text = count.ToString();
     }
-    private void Shoot()
+    private void NormalShoot()
     {
         AudioManager.Instance.Play(AudioName.BulletHit_1);
         Vector2 dir = ((Vector2)(transform.position - Camera.main.ScreenToWorldPoint(InputManager.MousePos))).normalized;
@@ -190,5 +203,24 @@ public class BallController : MonoBehaviour
         count--;
         UpdateCountText();
 
+    }
+
+    private void PenetrationShoot()
+    {
+        Vector2 dir = ((Vector2)(transform.position - Camera.main.ScreenToWorldPoint(InputManager.MousePos))).normalized;
+        StartCoroutine(PenetrationShootCoroutine(dir));
+    }
+    IEnumerator PenetrationShootCoroutine(Vector2 dir)
+    {
+        
+        while (!Physics2D.OverlapCircle(transform.position, transform.localScale.x).gameObject.CompareTag(Tags.WallBrick))
+        {
+            var hitBrick = Physics2D.OverlapCircle(transform.position, 1f).gameObject.GetComponent<BrickController>();
+            if (hitBrick != null&&!hitBrick.gameObject.CompareTag(Tags.WallBrick)) StartCoroutine(hitBrick.Destory());
+            ballRB.velocity = dir * data.maxSpeed*2.5f;
+            yield return  new WaitForEndOfFrame();
+        }
+        shootType = ShootType.Normal;
+      
     }
 }

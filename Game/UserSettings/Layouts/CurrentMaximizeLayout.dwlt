@@ -94,7 +94,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -169,8 +169,8 @@ MonoBehaviour:
     y: 0
     width: 873.3333
     height: 474.66666
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 5}
@@ -761,7 +761,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 86020000
       m_LastClickedID: 0
       m_ExpandedIDs: e2faffffe4faffff
       m_RenameOverlay:
@@ -902,7 +902,7 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 180}
-    m_SelectedIDs: 
+    m_SelectedIDs: 86020000
     m_LastClickedID: 0
     m_ExpandedIDs: ffffffff0000000050730000527300005473000056730000587300005a7300005c7300005e730000607300006273000064730000e2740000ec750000
     m_RenameOverlay:
@@ -929,8 +929,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 86020000
+    m_LastClickedInstanceID: 646
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
