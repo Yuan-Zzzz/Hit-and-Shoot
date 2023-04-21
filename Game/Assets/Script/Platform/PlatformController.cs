@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlatformController : MonoBehaviour
@@ -17,13 +18,31 @@ public class PlatformController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Register<Collision2D,GameObject>(EventName.BallHit, OnBallHit);
+        EventManager.Register(EventName.ChangeScale, OnChangeScale);
     }
 
+    private void OnChangeScale()
+    {
+        var sequence = DOTween.Sequence();
+        sequence.Append(transform.DOScale(new Vector2(2,2),0.2f))
+         .Append(transform.DOPunchScale(new Vector2(0.7f,0.7f),0.05f))
+         //此处为持续时间（临时丢个10进去）
+         .AppendInterval(10f)
+         .AppendCallback(() =>
+         {
+             transform.DOScale(new Vector2(1, 1), 0.1f);
+         });
+    }
+
+    private Tweener scaleTweener;
     private void OnBallHit(Collision2D other,GameObject ball)
     {
         if(other.gameObject == this.gameObject)
         {
-            transform.DOPunchScale(new Vector2(0.2f, 0.2f), 0.2f);
+            if (scaleTweener != null) scaleTweener.Kill();
+            //transform.localScale = Vector3.one;
+            scaleTweener = transform.DOPunchScale(new Vector2(0.2f, 0.2f), 0.2f);
+            
             GetComponent<SpriteRenderer>().DOBlendableColor(ball.GetComponent<SpriteRenderer>().color,1f);
         }
     }
@@ -31,6 +50,7 @@ public class PlatformController : MonoBehaviour
     private void OnDisable()
     {
         EventManager.Remove<Collision2D,GameObject>(EventName.BallHit, OnBallHit);
+        EventManager.Remove(EventName.ChangeScale, OnChangeScale);
     }
     private void Start()
     {
@@ -42,11 +62,7 @@ public class PlatformController : MonoBehaviour
     {
         Move();
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-            transform.DOScale(new Vector3(1, 1, 1), 0.1f);
-        
-    }
+   
     private void Move()
     {
         platformRB.velocity = Vector2.MoveTowards(platformRB.velocity,new Vector2(data.maxSpeed*InputManager.Move.x,platformRB.velocity.y),data.acceleration);

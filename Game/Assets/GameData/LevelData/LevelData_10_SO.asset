@@ -401,3 +401,10 @@ MonoBehaviour:
       brickColor: {r: 0.51551634, g: 0.8207547, b: 0.2916518, a: 1}
       riftCount: 0
     pos: {x: -8, y: -1}
+  - brick: {fileID: 8782283930254488302, guid: 85c934752af234549ba24ad8569fc1e2, type: 3}
+    data:
+      count: 1
+      maxCount: 0
+      brickColor: {r: 0, g: 1, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: 0, y: 2}
