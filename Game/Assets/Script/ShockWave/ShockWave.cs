@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class ShockWave : MonoBehaviour
 {
-    private void OnEnable()
+    public SpriteRenderer spriteRenderer;
+    private void Start()
     {
-        StartCoroutine(Wave(GetComponent<SpriteRenderer>()));
+        spriteRenderer.material.SetFloat("_WaveDistanceFromCenter", -0.1f);
+        StartCoroutine(Wave(spriteRenderer));
     }
-
     IEnumerator Wave(SpriteRenderer waveSpr)
     {
-        waveSpr.material.SetFloat("_WaveDistanceFromCenter", -0.1f);
+       
         while (waveSpr.material.GetFloat("_WaveDistanceFromCenter")<1)
         {
             waveSpr.material.SetFloat("_WaveDistanceFromCenter", waveSpr.material.GetFloat("_WaveDistanceFromCenter") + 0.035f);
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForEndOfFrame();
         }
-        Destroy(this.gameObject);
+        Debug.Log("ssssss");
+        spriteRenderer.material.SetFloat("_WaveDistanceFromCenter", -0.1f);
+     
     }
 }
