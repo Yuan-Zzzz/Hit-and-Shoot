@@ -286,7 +286,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000fd33097a
+  m_ApplyToSortingLayers: 00000000fd33097a55f3536f
   m_ShapePath:
   - {x: -0.3809524, y: -0.3809524, z: 0}
   - {x: -0.3809524, y: 0.3809524, z: 0}
@@ -294,7 +294,7 @@ MonoBehaviour:
   - {x: 0.3809524, y: -0.3809524, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 74860
+  m_InstanceId: -1256532
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.3809524, y: 0.3809524, z: 0}
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Intensity: 0.3
   m_LightVolumeIntensity: 0.3
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fd33097a
+  m_ApplyToSortingLayers: 00000000fd33097a55f3536f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
