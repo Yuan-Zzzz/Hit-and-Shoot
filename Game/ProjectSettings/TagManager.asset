@@ -53,3 +53,9 @@ TagManager:
   - name: CameraSortingLayer
     uniqueID: 1867772757
     locked: 0
+  - name: BallLayer
+    uniqueID: 762663845
+    locked: 0
+  - name: Brick
+    uniqueID: 2835883883
+    locked: 0
