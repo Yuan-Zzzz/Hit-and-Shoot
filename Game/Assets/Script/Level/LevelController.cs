@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public List<LevelData_SO> levelDatas = new List<LevelData_SO>();
+    int brickCount;
     private void OnEnable()
     {
         EventManager.Register<int>(EventName.LoadLevel, OnLoadLevel);
@@ -30,6 +31,7 @@ public class LevelController : MonoBehaviour
             newBrick.GetComponent<BrickController>().data.maxCount = item.data.count;
             newBrick.GetComponent<BrickController>().data.brickColor = item.data.brickColor;
             newBrick.GetComponent<BrickController>().data.riftCount = item.data.riftCount;
+
         }
 
         //判断并加载无限模式
@@ -44,9 +46,17 @@ public class LevelController : MonoBehaviour
     {
         SceneControl.Instance.level++;
     }
+    BrickController[] bricks;
     private void Update()
     {
-        if (!GameObject.FindObjectOfType<BrickController>())
+        brickCount = 0;
+        bricks = GameObject.FindObjectsOfType<BrickController>();
+        foreach (var item in bricks)
+        {
+            if(!item.CompareTag(Tags.WallBrick))++brickCount;
+        }
+        Debug.Log(brickCount);
+        if (brickCount<=0)
         {
             EventManager.Send(EventName.GamePass);
         }
