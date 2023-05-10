@@ -59,7 +59,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Float: 0
-    - _ShockWaveStrength: 0.5
+    - _ShockWaveStrength: 0.3
     - _Size: 0.1
     - _WaveDistanceFromCenter: -0.1
     - _XSizeRatio: 1.777

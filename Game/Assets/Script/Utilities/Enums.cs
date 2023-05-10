@@ -7,7 +7,7 @@ public enum EventName
     CanShoot,ShootCountInit,
     EnterBulletTime,ExitBulletTime,
     GamePass,GameOver,
-    ChangeScale
+    ChangeScale,ChangeShootType
 }
 public enum PoolName
 {

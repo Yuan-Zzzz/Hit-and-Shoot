@@ -32,6 +32,7 @@ public class BallController : MonoBehaviour
     {
         EventManager.Register<bool>(EventName.CanShoot, OnCanShoot);
         EventManager.Register<int>(EventName.ShootCountInit, OnShootCountInit);
+        EventManager.Register<ShootType>(EventName.ChangeShootType, OnChangeShootType);
         Initialize();
     }
 
@@ -52,6 +53,13 @@ public class BallController : MonoBehaviour
 
         EventManager.Remove<bool>(EventName.CanShoot, OnCanShoot);
         EventManager.Remove<int>(EventName.ShootCountInit, OnShootCountInit);
+        EventManager.Remove<ShootType>(EventName.ChangeShootType, OnChangeShootType);
+    }
+
+    private void OnChangeShootType(ShootType _type)
+    {
+        shootType = _type;
+       
     }
 
     private void OnCanShoot(bool _canShoot)
@@ -61,6 +69,20 @@ public class BallController : MonoBehaviour
     }
     private void Update()
     {
+        if (canShoot)
+        {
+            switch (shootType)
+            {
+                case ShootType.Normal:
+                    CountText.color = Color.black;
+                    break;
+                case ShootType.Penetration:
+                    CountText.color = Color.red;
+                    break;
+                default:
+                    break;
+            }
+        }
         if (InputManager.ShootPerformed && canShoot)
         {
             AudioManager.Instance.Play(AudioName.BulletTime);
