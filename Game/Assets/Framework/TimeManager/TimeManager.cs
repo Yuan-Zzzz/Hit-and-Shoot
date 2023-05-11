@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public static class TimeManager
 {
+
+  
   private static float defaultFixedDeltaTime = Time.fixedDeltaTime;
 
    public static void LaunchBulletTime(float _bulletTimeScale)
@@ -36,5 +38,10 @@ public static class TimeManager
         Time.timeScale = 1f;
     }
   
+    public static void StartRecordTime()
+    {
+
+    }
+
 }
 
