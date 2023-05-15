@@ -18,7 +18,8 @@ public class SceneControl : SingletonMono<SceneControl>
     protected override void Awake()
     {
         base.Awake();
-       // SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Additive);
+        //打包时把这个注释取消
+      //SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Additive);
        
     }
     /// <summary>

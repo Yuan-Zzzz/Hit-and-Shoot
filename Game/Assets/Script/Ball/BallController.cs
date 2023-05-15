@@ -174,7 +174,6 @@ public class BallController : MonoBehaviour
         {
             AudioManager.Instance.Play(AudioName.Hit_1);
             float x = HitFactor(transform.position, other.transform.position, other.collider.bounds.size.x);
-
             ballRB.velocity = new Vector2(x, 1).normalized * data.maxSpeed;
         }
 
@@ -237,7 +236,7 @@ public class BallController : MonoBehaviour
     IEnumerator PenetrationShootCoroutine(Vector2 dir)
     {
         
-        while (!Physics2D.OverlapCircle(transform.position, transform.localScale.x).gameObject.CompareTag(Tags.WallBrick))
+        while (!Physics2D.OverlapCircle(transform.position, transform.localScale.x+0.1f).gameObject.CompareTag(Tags.WallBrick))
         {
             var hitBrick = Physics2D.OverlapCircle(transform.position, 1f).gameObject.GetComponent<BrickController>();
             if (hitBrick != null&&!hitBrick.gameObject.CompareTag(Tags.WallBrick)) StartCoroutine(hitBrick.Destory());

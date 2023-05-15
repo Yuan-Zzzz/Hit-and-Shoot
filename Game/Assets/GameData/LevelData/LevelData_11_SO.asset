@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelData_11_SO
   m_EditorClassIdentifier: 
   canShoot: 1
-  shootCount: 6
+  shootCount: 10
   ballPosition: {x: 0, y: 0}
   bricks:
   - brick: {fileID: 1012613539767689776, guid: 0af64e290c4bbe84992a678df4e77f1f, type: 3}

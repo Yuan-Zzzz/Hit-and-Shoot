@@ -10,222 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e66422539fed02e438b9d065fb2e947e, type: 3}
-  m_Name: LevelData_6_SO
+  m_Name: LevelData_18_SO
   m_EditorClassIdentifier: 
   canShoot: 1
-  shootCount: 10
-  ballPosition: {x: 0, y: -1.5}
+  shootCount: 6
+  ballPosition: {x: 0, y: 0}
   bricks:
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -2, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -3, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -4, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -5, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -6, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -7, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -8, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 2, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 3, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 4, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 5, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 6, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 7, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 8, y: 0}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 8, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 7, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 6, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 5, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 4, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 3, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: 2, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -2, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -3, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -4, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -5, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -6, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -7, y: 1}
-  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
-    data:
-      count: 2
-      maxCount: 0
-      brickColor: {r: 0.65882355, g: 1, b: 0.4392157, a: 0}
-      riftCount: 0
-    pos: {x: -8, y: 1}
-  - brick: {fileID: 1012613539767689776, guid: cfc02c4a7a1a57d45b65a1179ea4dfc2, type: 3}
-    data:
-      count: 1
-      maxCount: 0
-      brickColor: {r: 1, g: 0.7176471, b: 0, a: 0}
-      riftCount: 1
-    pos: {x: -3, y: 3}
-  - brick: {fileID: 1012613539767689776, guid: cfc02c4a7a1a57d45b65a1179ea4dfc2, type: 3}
-    data:
-      count: 1
-      maxCount: 0
-      brickColor: {r: 1, g: 0.7176471, b: 0, a: 0}
-      riftCount: 1
-    pos: {x: 3, y: 3}
   - brick: {fileID: 1012613539767689776, guid: 0af64e290c4bbe84992a678df4e77f1f, type: 3}
     data:
       count: 1
@@ -365,14 +155,14 @@ MonoBehaviour:
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 1}
       riftCount: 0
-    pos: {x: 1, y: 5}
+    pos: {x: 0, y: 5}
   - brick: {fileID: 1012613539767689776, guid: 0af64e290c4bbe84992a678df4e77f1f, type: 3}
     data:
       count: 1
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 1}
       riftCount: 0
-    pos: {x: 0, y: 5}
+    pos: {x: 1, y: 5}
   - brick: {fileID: 1012613539767689776, guid: 0af64e290c4bbe84992a678df4e77f1f, type: 3}
     data:
       count: 1
@@ -499,3 +289,143 @@ MonoBehaviour:
       brickColor: {r: 1, g: 1, b: 1, a: 1}
       riftCount: 0
     pos: {x: 9, y: -5}
+  - brick: {fileID: 1012613539767689776, guid: cfc02c4a7a1a57d45b65a1179ea4dfc2, type: 3}
+    data:
+      count: 1
+      maxCount: 0
+      brickColor: {r: 1, g: 1, b: 1, a: 1}
+      riftCount: 1
+    pos: {x: 0, y: 3}
+  - brick: {fileID: 1665733546877426403, guid: 7d22c988c9032d645a51bac88bec783f, type: 3}
+    data:
+      count: 1
+      maxCount: 0
+      brickColor: {r: 1, g: 1, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: 1, y: 4}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 2
+      maxCount: 0
+      brickColor: {r: 0.6038825, g: 0.9528302, b: 0.41948494, a: 1}
+      riftCount: 0
+    pos: {x: 5, y: 1}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 2
+      maxCount: 0
+      brickColor: {r: 0.45871922, g: 1, b: 0.044025064, a: 1}
+      riftCount: 0
+    pos: {x: 5, y: 0}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 2
+      maxCount: 0
+      brickColor: {r: 0.6565983, g: 1, b: 0.23270434, a: 1}
+      riftCount: 0
+    pos: {x: 5, y: 2}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 3
+      maxCount: 0
+      brickColor: {r: 0.25157225, g: 0.7096746, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: 6, y: 2}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 3
+      maxCount: 0
+      brickColor: {r: 0.30817604, g: 0.72896254, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: 6, y: 1}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 3
+      maxCount: 0
+      brickColor: {r: 0.21383637, g: 0.65072984, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: 6, y: 0}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 4
+      maxCount: 0
+      brickColor: {r: 0.9530884, g: 0.26100624, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: 7, y: 0}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 4
+      maxCount: 0
+      brickColor: {r: 0.9401899, g: 0.32704395, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: 7, y: 1}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 4
+      maxCount: 0
+      brickColor: {r: 0.8810625, g: 0.25157225, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: 7, y: 2}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 2
+      maxCount: 0
+      brickColor: {r: 0.44863996, g: 1, b: 0.23270434, a: 1}
+      riftCount: 0
+    pos: {x: -5, y: 2}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 3
+      maxCount: 0
+      brickColor: {r: 0.12893075, g: 0.6504761, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: -6, y: 2}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 4
+      maxCount: 0
+      brickColor: {r: 0.9103319, g: 0.41960788, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: -7, y: 2}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 4
+      maxCount: 0
+      brickColor: {r: 0.7669398, g: 0.09119487, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: -7, y: 1}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 3
+      maxCount: 0
+      brickColor: {r: 0.5157232, g: 0.70148546, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: -6, y: 1}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 2
+      maxCount: 0
+      brickColor: {r: 0.5051324, g: 1, b: 0.27987415, a: 1}
+      riftCount: 0
+    pos: {x: -5, y: 1}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 2
+      maxCount: 0
+      brickColor: {r: 0.6431373, g: 1, b: 0.37254903, a: 1}
+      riftCount: 0
+    pos: {x: -5, y: 0}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 3
+      maxCount: 0
+      brickColor: {r: 0.18553454, g: 0.5552098, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: -6, y: 0}
+  - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
+    data:
+      count: 1
+      maxCount: 0
+      brickColor: {r: 0.8775513, g: 0.35534585, b: 1, a: 1}
+      riftCount: 0
+    pos: {x: -7, y: 0}

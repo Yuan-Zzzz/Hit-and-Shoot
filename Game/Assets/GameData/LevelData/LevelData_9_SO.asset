@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelData_9_SO
   m_EditorClassIdentifier: 
   canShoot: 1
-  shootCount: 4
+  shootCount: 10
   ballPosition: {x: 0, y: 0}
   bricks:
   - brick: {fileID: 1012613539767689776, guid: 0af64e290c4bbe84992a678df4e77f1f, type: 3}
@@ -316,13 +316,6 @@ MonoBehaviour:
       maxCount: 0
       brickColor: {r: 1, g: 1, b: 1, a: 1}
       riftCount: 0
-    pos: {x: -5, y: -1}
-  - brick: {fileID: 1012613539767689776, guid: 0af64e290c4bbe84992a678df4e77f1f, type: 3}
-    data:
-      count: 1
-      maxCount: 0
-      brickColor: {r: 1, g: 1, b: 1, a: 1}
-      riftCount: 0
     pos: {x: 5, y: 2}
   - brick: {fileID: 1012613539767689776, guid: 0af64e290c4bbe84992a678df4e77f1f, type: 3}
     data:
@@ -338,13 +331,6 @@ MonoBehaviour:
       brickColor: {r: 1, g: 1, b: 1, a: 1}
       riftCount: 0
     pos: {x: 5, y: 0}
-  - brick: {fileID: 1012613539767689776, guid: 0af64e290c4bbe84992a678df4e77f1f, type: 3}
-    data:
-      count: 1
-      maxCount: 0
-      brickColor: {r: 1, g: 1, b: 1, a: 1}
-      riftCount: 0
-    pos: {x: 5, y: -1}
   - brick: {fileID: 8782283930254488302, guid: 51e0fb03fd9ee8a408931022b5ec53d1, type: 3}
     data:
       count: 5
